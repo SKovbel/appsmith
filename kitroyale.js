@@ -22,7 +22,7 @@
         "topMenu": {
           "sales": {
             "title": "Sales",
-            "page": "sales_sale-overview",
+            "icon": "timeline-bar-chart",
             "submenus": [
               {
                 "title": "Sales overview",
@@ -52,7 +52,7 @@
           },
           "finance": {
             "title": "Finance",
-            "page": "finance_finance-overview",
+            "icon": "timeline-area-chart",
             "submenus": [
               {
                 "title": "Finance overview",
