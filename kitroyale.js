@@ -83,6 +83,30 @@
                 "page": "finance_annual-summary",
               }
             ]
+          },
+          "product": {
+            "title": "Product",
+            "icon": "timshopping-cart",
+            "disabled": true,
+            "submenus": [
+              {
+                "title": "Product 1",
+                "page": "",
+                "visible": false
+              }
+            ]
+          },
+          "merchandizing": {
+            "title": "Merchandizing",
+            "icon": "flash",
+            "disabled": true,
+            "submenus": [
+              {
+                "title": "Merchandizing 1",
+                "page": "",
+                "visible": false
+              }
+            ]
           }
         }
       }
