@@ -9,7 +9,7 @@
             exports: {}
         }
         factory(mod.exports)
-        global.exportCsv = mod.exports
+        global.kitroyale = mod.exports
     }
 })(this, function (exports) {
     "use strict"
