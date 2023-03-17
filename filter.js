@@ -39,13 +39,15 @@
     }
 
     exports.selectDateType = () => {
-        var range = filter_period.selectedOptionValue;
-        filter_dateFrom.isDisabled = range != 'date'
-        filter_dateTo.isDisabled = range != 'date'
+        if (typeof filter_dateFrom != "undefined") {
+            var range = filter_period.selectedOptionValue
+            filter_dateFrom.isDisabled = range != 'date'
+            filter_dateTo.isDisabled = range != 'date'
+        }
     }
-    
+
     exports.confirm = () => {
-        var range = filter_period.selectedOptionValue;
+        var range = filter_period.selectedOptionValue
         if (range == 'date') {
             var to = moment(filter_dateTo.selectedDate)
             var from = moment(filter_dateFrom.selectedDate)
@@ -181,8 +183,9 @@
 
     exports.yearsPeriod = () => {
         var data = [{"label": "Last 12 monthes", "value": ""}]
-        for (var year = moment(Date()).year(); year >= 2015; year--)
+        for (var year = moment(Date()).year(); year >= 2015; year--) {
             data.push({"label": "Year " + year, "value": year})
+        }
         return data
     }
 })
