@@ -12,6 +12,8 @@
 })(this, function (exports) {
     "use strict"
 
+    exports.round =  (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d)
+
     exports.percent = (a, b) => (a && b) 
         ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(kitroyale.kitroyale.ui.locale)) + '%' 
         : null
