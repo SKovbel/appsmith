@@ -9,12 +9,12 @@
             exports: {}
         }
         factory(mod.exports)
-        global.filterss = mod.exports
+        global.filter = mod.exports
     }
 })(this, function (exports) {
     "use strict"
 
-    exports.filterss = {
+    exports.filter = function() { return {
         getPeriodAFrom: (format) => format ? moment(appsmith.store.periodFrom).format('YYYY-MM-DD') : moment(appsmith.store.periodFrom),
         getPeriodATo: (format) => format ? moment(appsmith.store.periodTo).format('YYYY-MM-DD') : moment(appsmith.store.periodTo),
         getPeriodBFrom: (format) => format ? moment(appsmith.store.compareFrom).format('YYYY-MM-DD') : moment(appsmith.store.compareFrom),
@@ -179,5 +179,5 @@
             }
             closeModal('FilterModal')
         }
-    }
+    }}
 })
