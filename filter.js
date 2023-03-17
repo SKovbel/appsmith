@@ -5,9 +5,7 @@
     } else if (typeof exports !== "undefined") {
         factory(exports)
     } else {
-        var mod = {
-            exports: {}
-        }
+        var mod = {exports: {}}
         factory(mod.exports)
         global.filter = mod.exports
     }
@@ -214,5 +212,4 @@
     exports.paymentCondition = () => filter_payment.selectedOptionValues.length 
         ? 'payment: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
         : ''
-
 })

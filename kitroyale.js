@@ -5,9 +5,7 @@
     } else if (typeof exports !== "undefined") {
         factory(exports)
     } else {
-        var mod = {
-            exports: {}
-        }
+        var mod = {exports: {}}
         factory(mod.exports)
         global.kitroyale = mod.exports
     }
