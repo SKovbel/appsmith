@@ -1,4 +1,4 @@
-// File filter.js
+// File format.js
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
         define(["exports"], factory)
@@ -7,7 +7,7 @@
     } else {
         var mod = {exports: {}}
         factory(mod.exports)
-        global.filter = mod.exports
+        global.format = mod.exports
     }
 })(this, function (exports) {
     "use strict"
