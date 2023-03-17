@@ -44,7 +44,7 @@
         filter_dateTo.isDisabled = range != 'date'
     }
     
-    exports.confirm = (back) => {
+    exports.confirm = () => {
         var range = filter_period.selectedOptionValue;
         if (range == 'date') {
             var to = moment(filter_dateTo.selectedDate)
@@ -177,8 +177,12 @@
             storeValue('year', 'py')
         }
         closeModal('FilterModal')
-        if (back) {
-            back()
-        }
+    }
+
+    exports.yearsPeriod = () => {
+        var data = [{"label": "Last 12 monthes", "value": ""}]
+        for (var year = moment(Date()).year(); year >= 2015; year--)
+            data.push({"label": "Year " + year, "value": year})
+        return data
     }
 })
