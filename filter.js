@@ -44,7 +44,7 @@
         filter_dateTo.isDisabled = range != 'date'
     }
     
-    exports.confirm = () => {
+    exports.confirm = (back) => {
         var range = filter_period.selectedOptionValue;
         if (range == 'date') {
             var to = moment(filter_dateTo.selectedDate)
@@ -177,5 +177,8 @@
             storeValue('year', 'py')
         }
         closeModal('FilterModal')
+        if (back) {
+            back()
+        }
     }
 })
