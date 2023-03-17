@@ -37,14 +37,18 @@
     }
 
     exports.selectDateType = () => {
-        if (typeof filter_dateFrom != "undefined") {
-            var range = filter_period.selectedOptionValue
-            filter_dateFrom.isDisabled = range != 'date'
-            filter_dateTo.isDisabled = range != 'date'
+        if (typeof filter_dateFrom == "undefined" || typeof filter_period == "undefined" ) {
+            return
         }
+        var range = filter_period.selectedOptionValue
+        filter_dateFrom.isDisabled = range != 'date'
+        filter_dateTo.isDisabled = range != 'date'
     }
 
     exports.confirm = () => {
+        if (typeof filter_period == "undefined" ) {
+            return
+        }
         var range = filter_period.selectedOptionValue
         if (range == 'date') {
             var to = moment(filter_dateTo.selectedDate)
