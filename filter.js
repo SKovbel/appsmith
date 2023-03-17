@@ -193,15 +193,25 @@
         return '["' + values.join('","') + '"]'
     }
 
-    exports.skuCondition = () => filter_sku.text ? 'sku: {contains: "'+filter_sku.text+'"}' : ''
+    exports.skuCondition = () => filter_sku.text
+        ? 'sku: {contains: "' + filter_sku.text + '"}'
+        : ''
 
-    exports.statusCondition = () => filter_status.selectedOptionValues.length ? 'status: {in: '+
-        filter.arrayToString(filter_status.selectedOptionValues)
-    + '}': ''
+    exports.statusCondition = () => filter_status.selectedOptionValues.length 
+        ? 'status: {in: '+ filter.arrayToString(filter_status.selectedOptionValues) + '}'
+        : ''
 
-    exports.storeCodesCondition = () => {
+    exports.countryCondition = () => filter_country.selectedOptionValues.length 
+        ? 'status: {in: '+ filter.arrayToString(filter_country.selectedOptionValues) + '}'
+        : ''
+
+    exports.paymentCondition = () => filter_payment.selectedOptionValues.length 
+        ? 'status: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
+        : ''
+
+    exports.channelCondition = () => {
         var codes = [...filter_channel.selectedOptionValues]
-        //codes.push(Math.random().toString()) // randomize query with unreal store code
-        return 'storeCode: {in: ["' + codes.join('","') + '"]}'
+        // codes.push(Math.random().toString()) // randomize query with unreal store code
+        return 'storeCode: {in: ' + filter.arrayToString(codes) + '}'
     }
 })
