@@ -108,6 +108,62 @@
               }
             ]
           }
+        },
+        "filter": {
+          "period":[
+            {
+                "label": "Date range",
+                "value": "date"
+            },
+            {
+                "label": "This week",
+                "value": "week"
+            },
+            {
+                "label": "This month",
+                "value": "month"
+            },
+            {
+                "label": "This year",
+                "value": "year"
+            },
+            {
+                "label": "This fiscal year",
+                "value": "fyear"
+            },
+            {
+                "label": "Last week",
+                "value": "lweek"
+            },
+            {
+                "label": "Last month",
+                "value": "lmonth"
+            },
+            {
+                "label": "Last year",
+                "value": "lyear"
+            },
+            {
+                "label": "Last fiscal year",
+                "value": "lfyear"
+            },
+            {
+                "label": "Last 7 days",
+                "value": "7d"
+            },
+            {
+                "label": "Last 30 days",
+                "value": "30d"
+            },
+            {
+                "label": "Last 90 days",
+                "value": "90d"
+            },
+            {
+                "label": "Last 12 months",
+                "value": "12m"
+            }
+          ]
         }
       }
     }
