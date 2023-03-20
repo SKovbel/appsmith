@@ -108,6 +108,42 @@
           }
         },
         "filter": {
+            "channel": [
+              {
+                "label": "All",
+                "value": "_all",
+                "children": [
+                  {
+                    "label": "Ecommerce All",
+                    "value": "_e_all",
+                    "children": [
+                        {
+                            "label": "UK",
+                            "value": "uk"
+                        },
+                        {
+                            "label": "EU",
+                            "value": "eu"
+                        },
+                        {
+                            "label": "US",
+                            "value": "us"
+                        }
+                    ]
+                  },
+                  {
+                    "label": "Offline All",
+                    "value": "_o_all",
+                    "children": [
+                        {
+                            "label": "offline retail",
+                            "value": "sq"
+                        }
+                    ]
+                  }
+                ]  
+            }
+          ],
           "period":[
             {
                 "label": "Date range",
