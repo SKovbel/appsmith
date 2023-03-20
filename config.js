@@ -144,6 +144,27 @@
               ]  
             }
           ],
+          "channel_f": [
+            {
+
+              "label": "Ecommerce All",
+              "value": "_e_all",
+              "children": [
+                  {
+                      "label": "UK",
+                      "value": "uk"
+                  },
+                  {
+                      "label": "EU",
+                      "value": "eu"
+                  },
+                  {
+                      "label": "US",
+                      "value": "us"
+                  }
+              ]
+            }
+          ],
           "period":[
             {
                 "label": "Date range",
