@@ -21,14 +21,14 @@
     exports.format = (title, v) => {
         if (v == 0 || isNaN(v)) return ''
         var options = {minimumFractionDigits: 0, maximumFractionDigits: 0}
-        if (title.includes('AOV') || title.includes('ATV') || title.includes('Rate')) {
+        if (title.includes('AOV') || title.includes('ATV') || title.includes('Rate') || title.includes('%')) {
             options['minimumFractionDigits'] = 2
             options['maximumFractionDigits'] = 2
             v = Math.round(100 * v) / 100
         } else {
             v = Math.round(v)
         }
-        if (title.includes('£')) {
+        if (title.includes('£') || title.includes('$')) {
             options['style'] = "currency"
             options['currency'] = kitroyale.kitroyale.ui.currency
         }
