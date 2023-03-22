@@ -109,8 +109,8 @@
         },
         "table": {
           "first_colulmn_color": "#bfdbfe",
-          "invoice_colulmn_color": "#bffedb",
-          "refund_colulmn_color": "#febfdb"
+          "invoice_colulmn_color": "#febfdb",
+          "refund_colulmn_color": "#bffedb"
         },
         "filter": {
           "payment": [
