@@ -108,9 +108,6 @@
           }
         },
         "table": {
-          "first_colulmn_color": "#bfdbfe",
-          "invoice_colulmn_color": "#febfdb",
-          "refund_colulmn_color": "#bffedb",
           "colors": {
             "first_colulmn": "#bfdbfe",
             "invoice_colulmn": "#febfdb",
