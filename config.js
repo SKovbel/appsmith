@@ -260,6 +260,20 @@
             "columnMargin": {"title": () => "Margin"},
             "columnStock": {"title": () => "Stock"},
           },
+          "finance_shipping": {
+            "columnTitle": {"title": () => ""},
+            "columnOrders": {"title": () => "Orders"},
+            "columnShipments": {"title": () => "Shipments"},
+            "columnQty": {"title": () => "Qty"},
+            "columnFreeQty": {"title": () => "Free qty"},
+            "columnAOV": {"title": () => "AOV"},
+            "columnShipping": {"title": () => "Shipping"},
+            "columnShippingVAT": {"title": () => "Shipping VAT"},
+            "columnTotalExVAT": {"title": () => "Total ex VAT"},
+            "columnTotalVAT": {"title": () => "Total VAT"},
+            "columnTotal": {"title": () => "Total "},
+            "columnShipping refunded ex VAT": {"title": () => "Shipping refunded ex VAT"},
+          }
         },
 
         "filter": {
