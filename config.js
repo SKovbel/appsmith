@@ -87,7 +87,7 @@
                 "page": "finance_annual-summary",
               },
               {
-                "title": "Coupon summary",
+                "title": "Coupon details",
                 "page": "finance_coupon",
               }
             ]
