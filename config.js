@@ -224,7 +224,24 @@
             "columnCurr": {"title": () => filter_country.selectedOptionLabels.join()},
             "columnGlob": {"title": () => "Global Total"},
             "columnVar": {"title": () => "% of Global Total"},
-          }
+          },
+          "finance_annual_summary": {
+            "columnTitle": {"title": () => "Current " + filter.getPeriodAFrom().format('YYYY')},
+            "columnJan": {"title": () => "Jan"},
+            "columnFeb": {"title": () => "Feb"},
+            "columnMar": {"title": () => "Mar"},
+            "columnApr": {"title": () => "Apr"},
+            "columnMay": {"title": () => "May"},
+            "columnJun": {"title": () => "Jun"},
+            "columnJul": {"title": () => "Jul"},
+            "columnAug": {"title": () => "Aug"},
+            "columnSep": {"title": () => "Sep"},
+            "columnOct": {"title": () => "Oct"},
+            "columnNov": {"title": () => "Nov"},
+            "columnDec": {"title": () => "Dec"},
+            "columnYtd": {"title": () => "YTD"},
+            "columnTotal": {"title": () => "Total"},
+          },
         },
 
         "filter": {
