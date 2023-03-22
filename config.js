@@ -183,6 +183,26 @@
             "columnSat": {"title": () => "Sat"},
             "columnWtd": {"title": () => "WTD"},
             "columnWeek": {"title": () => "Weekly total"}
+          },
+          "sales_annual-sales-summary": {
+            "columnTitleB": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
+            "columnTitleC": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
+            "columnTitleD": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs #" + reports.getPeriodBFrom().format('YYYY')},
+            "columnJan": {"title": () => "Jan"},
+            "columnFeb": {"title": () => "Feb"},
+            "columnMar": {"title": () => "Mar"},
+            "columnApr": {"title": () => "Apr"},
+            "columnMay": {"title": () => "May"},
+            "columnJun": {"title": () => "Jun"},
+            "columnJul": {"title": () => "Jul"},
+            "columnAug": {"title": () => "Aug"},
+            "columnSep": {"title": () => "Sep"},
+            "columnOct": {"title": () => "Oct"},
+            "columnNov": {"title": () => "Nov"},
+            "columnDec": {"title": () => "Dec"},
+            "columnYtd": {"title": () => "YTD"},
+            "columnTotla": {"title": () => "Total"},
+
           }
         },
 
