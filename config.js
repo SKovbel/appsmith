@@ -202,7 +202,16 @@
             "columnDec": {"title": () => "Dec"},
             "columnYtd": {"title": () => "YTD"},
             "columnTotal": {"title": () => "Total"},
-
+          },
+          "sales_best_sellers": {
+            "columnRank": {"title": () => "Rank"},
+            "columnImage": {"title": () => "Image"},
+            "columnSku": {"title": () => "SKU"},
+            "columnSold": {"title": () => "Sold items"},
+            "columnOrig": {"title": () => "Original price"},
+            "columnPrice": {"title": () => "Price"},
+            "columnTotal": {"title": () => "Total sold"},
+            "columnName": {"title": () => "Product name"},
           }
         },
 
