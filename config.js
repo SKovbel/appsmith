@@ -212,6 +212,12 @@
             "columnPrice": {"title": () => "Price"},
             "columnTotal": {"title": () => "Total sold"},
             "columnName": {"title": () => "Product name"},
+          },
+          "finance_sales_summary": {
+            "columnTitle": {"title": () => ""},
+            "columnThis": {"title": () => appsmith.store.period},
+            "columnPrev": {"title": () => appsmith.store.compare},
+            "columnVar": {"title": () => "Variance"},
           }
         },
 
