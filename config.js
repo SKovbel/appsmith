@@ -116,15 +116,15 @@
           "payment": [
               {
                   "value": "adyen_cc",
-                  "label": "Adyen CC"
+                  "label": "Adyen cc"
               },
               {
                   "value": "adyen_hpp",
-                  "label": "Adyen HPP"
+                  "label": "Adyen hpp"
               },
               {
                   "value": "paypal_express",
-                  "label": "Paypal (Express)"
+                  "label": "Paypal express"
               },
               {
                   "value": "globale",
@@ -132,7 +132,7 @@
               },
               {
                   "value": "klarna_kp",
-                  "label": "Klarna PK"
+                  "label": "Klarna pk"
               },
               {
                   "value": "free",
@@ -148,7 +148,7 @@
               },
               {
                   "value": "braintree_paypal",
-                  "label": "Paypal (Braintree)"
+                  "label": "Paypal braintree"
               }
           ],
           "status": [
