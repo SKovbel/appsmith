@@ -19,6 +19,7 @@
         "timeZone": "Europe/London",
         "topMenu": {
           "colors": {
+            "topActive": '#ff0000',
             "active": '#ff0000'
           },
           "sales": {
