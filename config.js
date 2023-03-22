@@ -12,7 +12,7 @@
 })(this, function (exports) {
     "use strict"
 
-    exports.kitroyale = {
+    exports.config = {
       "ui": {
         "local": "en-GB",
         "currency": "GBP",
