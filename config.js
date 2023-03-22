@@ -22,7 +22,7 @@
             "topColor": '#64748b',
             "topActive": '#ff0000',
             "active": '#ff0000',
-            "color": 'white'
+            "color": '#000000'
           },
           "sales": {
             "title": "Sales",
