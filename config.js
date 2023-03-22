@@ -110,7 +110,23 @@
         "table": {
           "first_colulmn_color": "#bfdbfe",
           "invoice_colulmn_color": "#febfdb",
-          "refund_colulmn_color": "#bffedb"
+          "refund_colulmn_color": "#bffedb",
+          "sales_daily_sales_summary": {
+              "column1A": {"title": "{{Current week #{{reports.getDateA().format(\"WW YYYY\")}}"},
+              "column1B": {"title": "{{Previous week #{{reports.getDateB().format(\"WW YYYY\")}}"},
+              "column1C": {"title": "{{Variance #{{reports.getDateA().format(\"WW YYYY\")}} vs #{{reports.getDateB().format(\"WW YYYY\")}}"},
+              "column1D": {"title": "{{Previous year #{{reports.getDateC().format(\"WW YYYY\")}}"},
+              "column1E": {"title": "{{Variance #{{reports.getDateA().format(\"WW YYYY\")}} vs #{{reports.getDateC().format(\"WW YYYY\")}}"},
+              "column2": {"title": "Sun"},
+              "column3": {"title": "Mon"},
+              "column4": {"title": "Tue"},
+              "column5": {"title": "Wed"},
+              "column6": {"title": "Thu"},
+              "column7": {"title": "Fri"},
+              "column8": {"title": "Sat"},
+              "column9": {"title": "WTD"},
+              "column10": {"title": "Weekly total"},
+          }
         },
         "filter": {
           "payment": [
