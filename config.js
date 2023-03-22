@@ -132,7 +132,7 @@
               "columnWtd": {"title": () => "WTD"},
               "columnWeek": {"title": () => "Weekly total"}
           },
-          "sales_ecommerce-weekly": {
+          "sales_ecommerce_weekly": {
             "columnTitleA": {"title": () => ""},
             "columnTitleB": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
             "columnTitleC": {"title": () => "Previous week #" +reports.getDateB().format("WW YYYY")},
