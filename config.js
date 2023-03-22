@@ -18,6 +18,9 @@
         "currency": "GBP",
         "timeZone": "Europe/London",
         "topMenu": {
+          "colors": {
+            "active": '#ff0000'
+          },
           "sales": {
             "title": "Sales",
             "icon": "timeline-bar-chart",
