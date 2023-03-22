@@ -240,6 +240,26 @@
             "column10": {"title": () => report.getHeaderDate(10)},
             "column11": {"title": () => report.getHeaderDate(11)}
           },
+          "finance_sales_details": {
+            "columnTitle": {"title": () => "Sku"},
+            "columnName": {"title": () => "Name"},
+            "columnPrice": {"title": () => "Price"},
+            "columnSppecial": {"title": () => "Special"},
+            "columnQty": {"title": () => "Qty"},
+            "columnQtyRefunded": {"title": () => "Qty refunded"},
+            "columnTotal": {"title": () => "Total"},
+            "columnRevenue": {"title": () => "Revenue"},
+            "columnRefunded": {"title": () => "Refunded"},
+            "columnNetQty": {"title": () => "NetQty"},
+            "columnNetSales": {"title": () => "Net Sales"},
+            "columnNetSalesVat": {"title": () => "Net Sales Vat"},
+            "columnNetTotalSales": {"title": () => "Net Total Sales"},
+            "columnCost": {"title": () => "Cost"},
+            "columnCostTotal": {"title": () => "Cost Total"},
+            "columnProfit": {"title": () => "Profit"},
+            "columnMargin": {"title": () => "Margin"},
+            "columnStock": {"title": () => "Stock"},
+          },
         },
 
         "filter": {
