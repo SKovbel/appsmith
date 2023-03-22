@@ -244,7 +244,7 @@
             "columnTitle": {"title": () => "Sku"},
             "columnName": {"title": () => "Name"},
             "columnPrice": {"title": () => "Price"},
-            "columnSppecial": {"title": () => "Special"},
+            "columnSpecial": {"title": () => "Special"},
             "columnQty": {"title": () => "Qty"},
             "columnQtyRefunded": {"title": () => "Qty refunded"},
             "columnTotal": {"title": () => "Total"},
