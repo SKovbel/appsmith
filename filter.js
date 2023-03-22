@@ -32,7 +32,6 @@
     }
 
     exports.showFilters = () => {
-        filter.selectDateType()
         showModal('FilterModal')
     }
 
