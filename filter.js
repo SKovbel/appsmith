@@ -36,6 +36,7 @@
     }
 
     exports.confirm = () => {
+        closeModal('FilterModal')
         if (typeof filter_period == "undefined" ) {
             return
         }
@@ -198,7 +199,6 @@
             storeValue('short', 'pw')
             storeValue('year', 'py')
         }
-        closeModal('FilterModal')
     }
 
     exports.yearsPeriod = () => {
