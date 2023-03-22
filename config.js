@@ -141,7 +141,7 @@
             "columnTitleF": {"title": () => "Variance #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateC().format("WW YYYY")},
             "columnDayPrev": {"title": () => moment(filter_period.selectedDate).subtract(1,'week').format('ddd, DD.MM')},
             "columnDayCurr": {"title": () => moment(filter_period.selectedDate).format('ddd, DD.MM')},
-            "columnDayVar": {"title": () => moment(filter_period.selectedDate).format('ddd') + ", Var %"},
+            "columnDayVar": {"title": () => "Var %"},
             "columnWtdPrev": {"title": () => "WTD, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
             "columnWtdCurr": {"title": () => "WTD, #" + moment(filter_period.selectedDate).format('WW')},
             "columnWtdVar": {"title": () => "WTD, Var %"},
