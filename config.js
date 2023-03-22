@@ -131,8 +131,34 @@
               "columnSat": {"title": () => "Sat"},
               "columnWtd": {"title": () => "WTD"},
               "columnWeek": {"title": () => "Weekly total"}
-          }
+          },
+          "sales_ecommerce-weekly": {
+            "columnTitleA": {"title": () => ""},
+            "columnTitleB": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
+            "columnTitleC": {"title": () => "Previous week #" +reports.getDateB().format("WW YYYY")},
+            "columnTitleD": {"title": () => "Variance #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateB().format("WW YYYY")},
+            "columnTitleE": {"title": () => "Previous year #" + reports.getDateC().format("WW YYYY")},
+            "columnTitleF": {"title": () => "Variance #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateC().format("WW YYYY")},
+            "columnDayPrev": {"title": () => moment(filter_period.selectedDate).subtract(1,'week').format('ddd, DD.MM')},
+            "columnDayCurr": {"title": () => moment(filter_period.selectedDate).format('ddd, DD.MM')},
+            "columnDayVar": {"title": () => moment(filter_period.selectedDate).format('ddd') + ", Var %"},
+            "columnWtdPrev": {"title": () => "WTD, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
+            "columnWtdCurr": {"title": () => "WTD, #" + moment(filter_period.selectedDate).format('WW')},
+            "columnWtdVar": {"title": () => "WTD, Var %"},
+            "columnTotalPrev": {"title": () => "Total, " + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
+            "columnTotalCurr": {"title": () => "Total, " + moment(filter_period.selectedDate).format('WW')},
+            "columnTotalVar": {"title": () => "Total, Var %"},
+            "columnSun": {"title": () => "Sun"},
+            "columnMon": {"title": () => "Mon"},
+            "columnTue": {"title": () => "Tue"},
+            "columnWed": {"title": () => "Wed"},
+            "columnThu": {"title": () => "Thu"},
+            "columnFri": {"title": () => "Fri"},
+            "columnSat": {"title": () => "Sat"},
+            "columnWtd": {"title": () => "WTD"},
+            "columnWeek": {"title": () => "Weekly total"}
         },
+
         "filter": {
           "payment": [
               {
