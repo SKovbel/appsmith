@@ -185,6 +185,7 @@
             "columnWeek": {"title": () => "Weekly total"}
           },
           "sales_annual_sales_summary": {
+            "columnTitleA": {"title": () => ""},
             "columnTitleB": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
             "columnTitleC": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
             "columnTitleD": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs #" + reports.getPeriodBFrom().format('YYYY')},
