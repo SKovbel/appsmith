@@ -272,7 +272,7 @@
             "columnTotalExVAT": {"title": () => "Total ex VAT"},
             "columnTotalVAT": {"title": () => "Total VAT"},
             "columnTotal": {"title": () => "Total "},
-            "columnShipping refunded ex VAT": {"title": () => "Shipping refunded ex VAT"},
+            "columnShippingRefundedExVAT": {"title": () => "Shipping refunded ex VAT"},
           }
         },
 
