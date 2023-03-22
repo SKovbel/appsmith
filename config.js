@@ -185,10 +185,9 @@
             "columnWeek": {"title": () => "Weekly total"}
           },
           "sales_annual_sales_summary": {
-            "columnTitleA": {"title": () => ""},
-            "columnTitleB": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
-            "columnTitleC": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
-            "columnTitleD": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs #" + reports.getPeriodBFrom().format('YYYY')},
+            "columnTitleA": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
+            "columnTitleB": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
+            "columnTitleC": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs #" + reports.getPeriodBFrom().format('YYYY')},
             "columnJan": {"title": () => "Jan"},
             "columnFeb": {"title": () => "Feb"},
             "columnMar": {"title": () => "Mar"},
