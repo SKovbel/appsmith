@@ -261,7 +261,7 @@
             "columnStock": {"title": () => "Stock"},
           },
           "finance_shipping": {
-            "columnTitle": {"title": () => ""},
+            "columnTitle": {"title": () => "Method"},
             "columnOrders": {"title": () => "Orders"},
             "columnShipments": {"title": () => "Shipments"},
             "columnQty": {"title": () => "Qty"},
@@ -273,6 +273,15 @@
             "columnTotalVAT": {"title": () => "Total VAT"},
             "columnTotal": {"title": () => "Total "},
             "columnShippingRefundedExVAT": {"title": () => "Shipping refunded ex VAT"},
+          },
+          "finance_coupon": {
+            "columnTitle": {"title": () => "Order Id"},
+            "columnCoupon": {"title": () => "Coupon"},
+            "columnPaymentType": {"title": () => "Payment type"},
+            "columnOrdersTotal": {"title": () => "Orders total"},
+            "columnOrdersSubtotal": {"title": () => "Orders subtotal"},
+            "columnOrdersShipping": {"title": () => "Orders shipping"},
+            "columnRefundsTotal": {"title": () => "Refunds total"},
           }
         },
 
