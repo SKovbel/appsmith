@@ -157,7 +157,9 @@
             "columnSat": {"title": () => "Sat"},
             "columnWtd": {"title": () => "WTD"},
             "columnWeek": {"title": () => "Weekly total"}
+          }
         },
+
 
         "filter": {
           "payment": [
