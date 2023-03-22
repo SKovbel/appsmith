@@ -15,7 +15,7 @@
     exports.round =  (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d)
 
     exports.percent = (a, b) => (a && b) 
-        ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(kitroyale.kitroyale.ui.locale)) + '%' 
+        ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(kitroyale.config.ui.locale)) + '%' 
         : null
 
     exports.format = (title, v) => {
@@ -30,9 +30,9 @@
         }
         if (title.includes('£') || title.includes('$')) {
             options['style'] = "currency"
-            options['currency'] = kitroyale.kitroyale.ui.currency
+            options['currency'] = kitroyale.config.ui.currency
         }
-        return v.toLocaleString(kitroyale.kitroyale.ui.locale, options)
+        return v.toLocaleString(kitroyale.config.ui.locale, options)
     }
 
     exports.toArray = (obj) => {
