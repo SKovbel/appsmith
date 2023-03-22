@@ -150,7 +150,7 @@
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('period', 'Last 7 days')
-            storeValue('compare', 'Last 14 days')
+            storeValue('compare', 'Last 7-14 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
         } else if (range == '30d') {
@@ -161,7 +161,7 @@
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('period', 'Last 30 days')
-            storeValue('compare', 'Last 30 days')
+            storeValue('compare', 'Last 30-60 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
         } else if (range == '90d') {
@@ -172,7 +172,7 @@
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(1, 'year').format('YYYY-MM-DD'))
             storeValue('period', 'Last 90 days')
-            storeValue('compare', 'Last 90 days')
+            storeValue('compare', 'Last 90-180 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
         } else if (range == '12m') {
@@ -183,7 +183,7 @@
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(23 + 1 + 12, 'month').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(23 + 1, 'month').format('YYYY-MM-DD'))
             storeValue('period', 'Last 12 months')
-            storeValue('compare', 'Last 12 months')
+            storeValue('compare', 'Last 12-24 months')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
         } else {
