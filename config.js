@@ -112,7 +112,7 @@
           "invoice_colulmn_color": "#febfdb",
           "refund_colulmn_color": "#bffedb",
           "sales_daily_sales_summary": {
-              "column1A": {"title": "() => \"Current week #\" + reports.getDateA().format(\"WW YYYY\")"},
+              "column1A": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
               "column1B": {"title": "Previous week #{{reports.getDateB().format(\"WW YYYY\")}}"},
               "column1C": {"title": "Variance #{{reports.getDateA().format(\"WW YYYY\")}} vs #{{reports.getDateB().format(\"WW YYYY\")}}"},
               "column1D": {"title": "Previous year #{{reports.getDateC().format(\"WW YYYY\")}}"},
