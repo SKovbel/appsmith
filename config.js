@@ -85,6 +85,10 @@
               {
                 "title": "Annual summary",
                 "page": "finance_annual-summary",
+              },
+              {
+                "title": "Coupon summary",
+                "page": "finance_coupon",
               }
             ]
           },
