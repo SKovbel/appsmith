@@ -218,6 +218,12 @@
             "columnThis": {"title": () => appsmith.store.period},
             "columnPrev": {"title": () => appsmith.store.compare},
             "columnVar": {"title": () => "Variance"},
+          },
+          "finance_sales_by_country": {
+            "columnTitle": {"title": () => ""},
+            "columnCurr": {"title": () => filter_country.selectedOptionLabels.join()},
+            "columnGlob": {"title": () => "Global Total"},
+            "columnVar": {"title": () => "% of Global Total"},
           }
         },
 
