@@ -201,7 +201,7 @@
             "columnNov": {"title": () => "Nov"},
             "columnDec": {"title": () => "Dec"},
             "columnYtd": {"title": () => "YTD"},
-            "columnTotla": {"title": () => "Total"},
+            "columnTotal": {"title": () => "Total"},
 
           }
         },
