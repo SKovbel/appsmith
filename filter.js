@@ -183,8 +183,8 @@
             storeValue('compareTo', moment(Date()).subtract(12 + 1, 'month').format('YYYY-MM-DD'))
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(23 + 1 + 12, 'month').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(23 + 1, 'month').format('YYYY-MM-DD'))
-            storeValue('period', 'Last 12 days')
-            storeValue('compare', 'Last 12 days')
+            storeValue('period', 'Last 12 months')
+            storeValue('compare', 'Last 12 months')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
         } else {
