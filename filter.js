@@ -36,6 +36,10 @@
     }
 
     exports.confirm = () => {
+        var d = document.createElement("div"); d.innerHTML = 'hello'
+        document.body.insertBefore(d, document.body.firstChild)
+        console.log('test-11-22-33')
+
         closeModal('FilterModal')
         if (typeof filter_period == "undefined" ) {
             return
