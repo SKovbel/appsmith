@@ -20,8 +20,8 @@
         "topMenu": {
           "colors": {
             "topColor": '#64748b',
-            "topActive": '#ff0000',
-            "active": '#ff0000',
+            "topActive": '#000000',
+            "active": '#000000',
             "color": '#000000'
           },
           "sales": {
