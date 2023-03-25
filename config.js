@@ -21,7 +21,7 @@
           "colors": {
             "topColor": '#64748b',
             "topActive": '#000000',
-            "active": 'black', // word black used in styles, important to have
+            "active": '#000001', // word #000001 used in styles, important to have
             "color": '#000000'
           },
           "sales": {
