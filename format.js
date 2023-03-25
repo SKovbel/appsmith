@@ -19,7 +19,7 @@
         : null
 
     exports.format = (title, v) => {
-        if (v == 0 || isNaN(v)) return ''
+        if (v === '' || v === null || isNaN(v)) return ''
         var options = {minimumFractionDigits: 0, maximumFractionDigits: 0}
         if (title.includes('AOV') || title.includes('ATV') || title.includes('Rate') || title.includes('%')) {
             options['minimumFractionDigits'] = 2
