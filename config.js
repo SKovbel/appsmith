@@ -107,13 +107,19 @@
           "merchandizing": {
             "title": "Merchandizing",
             "icon": "flash",
-            "disabled": true,
             "submenus": [
-              {
-                "title": "Merchandizing 1",
-                "page": "",
-                "visible": false
-              }
+                {
+                    "title": "Color",
+                    "page": "merchandizing_size",
+                },
+                {
+                    "title": "Size",
+                    "page": "merchandizing_color",
+                },
+                {
+                    "title": "Category",
+                    "page": "merchandizing_category",
+                },
             ]
           }
         },
