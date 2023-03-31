@@ -47,12 +47,9 @@
         return val && val.length > 0 ? val.replace(/[^\d.-]/g, '') : ''
     }
 
-    exports.colorizeRow = (idx) => {
-        if (idx in currentRow) {
-            return this.toInt(currentRow[idx]) > 0 
-                ? kitroyale.config.ui.table.colors.positive 
-                : kitroyale.config.ui.table.colors.negative
-        }
-        return ''
+    exports.colorizeRow = (val) => {
+        return this.toInt(val) > 0 
+            ? kitroyale.config.ui.table.colors.positive 
+            : kitroyale.config.ui.table.colors.negative
     }
 })
