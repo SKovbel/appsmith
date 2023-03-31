@@ -35,6 +35,10 @@
         return v.toLocaleString(kitroyale.config.ui.locale, options)
     }
 
+    exports.toInt = (val) => {
+        val.length > 0 ? val.replace(/[^\d.-]/g, '') : ''
+    }
+
     exports.toArray = (obj) => {
         var arr = []
         for(let k of Object.keys(obj).sort()) {
