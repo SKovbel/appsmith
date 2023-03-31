@@ -128,7 +128,7 @@
             "first_colulmn": "#f5f5f5",
             "invoice_colulmn": "#febfdb",
             "refund_colulmn": "#bffedb",
-            "positive": "#00CC00",
+            "positive": "#008000",
             "negative": "#FF0000"
           },
           "sales_daily_sales_summary": {
