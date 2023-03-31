@@ -36,7 +36,7 @@
     }
 
     exports.toInt = (val) => {
-        val.length > 0 ? val.replace(/[^\d.-]/g, '') : ''
+        val && val.length > 0 ? val.replace(/[^\d.-]/g, '') : ''
     }
 
     exports.toArray = (obj) => {
