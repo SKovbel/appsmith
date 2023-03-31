@@ -48,6 +48,8 @@
     }
 
     exports.colorizeRow = (val) => {
+        const v = format.toInt(val) > 0 
+        if (v == 0) return ''
         return format.toInt(val) > 0 
             ? kitroyale.config.ui.table.colors.positive 
             : kitroyale.config.ui.table.colors.negative
