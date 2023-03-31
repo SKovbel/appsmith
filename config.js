@@ -143,7 +143,7 @@
               "columnFri": {"title": () => "Fri"},
               "columnSat": {"title": () => "Sat"},
               "columnWtd": {"title": () => "WTD"},
-              "columnWeek": {"title": () => "Weekly total"}
+              "columnWeek": {"title": () => "WoW total"}
           },
           "sales_ecommerce_weekly": {
             "columnTitleA": {"title": () => ""},
@@ -169,7 +169,7 @@
             "columnFri": {"title": () => "Fri"},
             "columnSat": {"title": () => "Sat"},
             "columnWtd": {"title": () => "WTD"},
-            "columnWeek": {"title": () => "Weekly total"}
+            "columnWeek": {"title": () => "WoW total"}
           },
           "sales_offline_retail_weekly": {
             "columnTitleA": {"title": () => ""},
@@ -195,7 +195,7 @@
             "columnFri": {"title": () => "Fri"},
             "columnSat": {"title": () => "Sat"},
             "columnWtd": {"title": () => "WTD"},
-            "columnWeek": {"title": () => "Weekly total"}
+            "columnWeek": {"title": () => "WoW total"}
           },
           "sales_annual_sales_summary": {
             "columnTitleA": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
