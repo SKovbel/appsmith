@@ -109,17 +109,17 @@
             "icon": "flash",
             "submenus": [
                 {
-                    "title": "Color",
-                    "page": "merchandizing_size",
+                    "title": "Merchandizing",
+                    "page": "merchandizing_overview"
                 },
                 {
-                    "title": "Size",
-                    "page": "merchandizing_color",
+                    "title": "Merchandizing summary",
+                    "page": "merchandizing_summary"
                 },
                 {
-                    "title": "Category",
-                    "page": "merchandizing_category",
-                },
+                    "title": "Merchandizing country",
+                    "page": "merchandizing_country"
+                }
             ]
           }
         },
