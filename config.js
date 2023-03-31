@@ -125,7 +125,7 @@
         },
         "table": {
           "colors": {
-            "first_colulmn": "#bfdbfe",
+            "first_colulmn": "#f5f5f5",
             "invoice_colulmn": "#febfdb",
             "refund_colulmn": "#bffedb",
           },
