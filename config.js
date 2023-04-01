@@ -241,19 +241,7 @@
             "columnVar": {"title": () => "% of Global Total"},
           },
           "finance_annual_summary": {
-            "columnTitle": {"title": () => "Current " + filter.getPeriodAFrom().format('YYYY')},
-            "column0": {"title": () => report.getHeaderDate(0)},
-            "column1": {"title": () => report.getHeaderDate(1)},
-            "column2": {"title": () => report.getHeaderDate(2)},
-            "column3": {"title": () => report.getHeaderDate(3)},
-            "column4": {"title": () => report.getHeaderDate(4)},
-            "column5": {"title": () => report.getHeaderDate(5)},
-            "column6": {"title": () => report.getHeaderDate(6)},
-            "column7": {"title": () => report.getHeaderDate(7)},
-            "column8": {"title": () => report.getHeaderDate(8)},
-            "column9": {"title": () => report.getHeaderDate(9)},
-            "column10": {"title": () => report.getHeaderDate(10)},
-            "column11": {"title": () => report.getHeaderDate(11)}
+
           },
           "finance_sales_details": {
             "columnTitle": {"title": () => "Sku"},
