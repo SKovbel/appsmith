@@ -21,8 +21,9 @@
     exports.format = (title, v) => {
         if (v === '' || v === null || isNaN(v)) return ''
         var options = {minimumFractionDigits: 0, maximumFractionDigits: 0}
-        if (title.includes('AOV') || title.includes('ATV') || title.includes('Rate') 
-            || title.includes('%') || title.includes('Conversion')) {
+        title = title.toLowerCase()
+        if (title.includes('aov') || title.includes('atv') || title.includes('rate') 
+            || title.includes('%') || title.includes('conversion')) {
             options['minimumFractionDigits'] = 2
             options['maximumFractionDigits'] = 2
             v = Math.round(100 * v) / 100
