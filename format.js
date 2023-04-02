@@ -18,8 +18,9 @@
         ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(kitroyale.config.ui.locale)) + '%' 
         : null
 
-    exports.format = (title, v) => {
+    exports.format = (title, v, hideZero) => {
         if (v === '' || v === null || isNaN(v)) return ''
+        if (v === 0 && hideZero) return ''
         var options = {minimumFractionDigits: 0, maximumFractionDigits: 0}
         title = title.toLowerCase()
         if (title.includes('aov') || title.includes('atv') || title.includes('rate') 
