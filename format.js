@@ -49,7 +49,7 @@
     exports.toInt = (val) => {
         return val && (typeof val === 'string' || val instanceof String) 
             ? parseInt(val.replace(/[^\d.-]/g, '')) 
-            : ''
+            : val
     }
 
     exports.colorizeRow = (val, negativeOnly) => {
