@@ -57,4 +57,8 @@
             ? kitroyale.config.ui.table.colors.positive 
             : kitroyale.config.ui.table.colors.negative
     }
+
+    cap = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    }
 })
