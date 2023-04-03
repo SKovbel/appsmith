@@ -202,7 +202,7 @@
           "sales_annual_sales_summary": {
             "columnTitleA": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
             "columnTitleB": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
-            "columnTitleC": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs #" + reports.getPeriodBFrom().format('YYYY')},
+            "columnTitleC": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs " + reports.getPeriodBFrom().format('YYYY')},
             "columnJan": {"title": () => "Jan"},
             "columnFeb": {"title": () => "Feb"},
             "columnMar": {"title": () => "Mar"},

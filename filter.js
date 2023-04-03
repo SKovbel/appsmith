@@ -106,7 +106,7 @@
             storeValue('compareTo', moment(Date()).subtract(2, 'week').endOf('week').format('YYYY-MM-DD'))
             storeValue('yearFrom', moment(appsmith.store.periodFrom).subtract(1, 'year').startOf('week').format('YYYY-MM-DD'))
             storeValue('yearTo', moment(appsmith.store.periodTo).subtract(1, 'year').endOf('week').format('YYYY-MM-DD'))
-            toreValue('period', 'Last week')
+            storeValue('period', 'Last week')
             storeValue('compare', 'Before last week')
             storeValue('short', 'pw')
             storeValue('year', 'py')
