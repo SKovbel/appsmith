@@ -1,1475 +1,206 @@
-// File kitroyale.js
-(function (global, factory) {
-    if (typeof define === "function" && define.amd) {
-        define(["exports"], factory)
-    } else if (typeof exports !== "undefined") {
-        factory(exports)
-    } else {
-        var mod = {exports: {}}
-        factory(mod.exports)
-        global.kitroyale = mod.exports
-    }
-})(this, function (exports) {
-    "use strict"
+export default {
+    // date functions
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  monthes: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  getDate: () => moment(Date()),
+  getDayname: (n) => this.days[n],
+  getMonthname: (n) => this.monthes[n],
+  getDay: () => this.getDateA().day(),
+  getWtdDay: () => this.getDateA().diff(moment(Date()), 'days') < 6  ? this.getDateA().day() : 6,
 
-    exports.config = {
-      "ui": {
-        "local": "en-GB",
-        "currency": "GBP",
-        "timeZone": "Europe/London",
-        "topMenu": {
-          "colors": {
-            "topColor": '#64748b',
-            "topActive": '#000000',
-            "active": '#000001', // word #000001 used in styles, important to have
-            "color": '#000000'
-          },
-          "sales": {
-            "title": "Sales",
-            "icon": "timeline-bar-chart",
-            "submenus": [
-              {
-                "title": "Sales overview",
-                "page": "sales_sale-overview",
-              },
-              {
-                "title": "Daily sales summary",
-                "page": "sales_daily-sales-summary",
-              },
-              {
-                "title": "Ecommerce weekly",
-                "page": "sales_ecommerce-weekly",
-              },
-              {
-                "title": "Offline retail weekly",
-                "page": "sales_offline-retail-weekly",
-              },
-              {
-                "title": "Annual sales summary",
-                "page": "sales_annual-sales-summary",
-              },
-              {
-                "title": "Best sellers",
-                "page": "sales_best-sellers",
-              }
-            ]
-          },
-          "finance": {
-            "title": "Finance",
-            "icon": "timeline-area-chart",
-            "submenus": [
-              {
-                "title": "Finance overview",
-                "page": "finance_finance-overview",
-              },
-              {
-                "title": "Sale summary",
-                "page": "finance_sales-summary",
-              },
-              {
-                "title": "Sales details",
-                "page": "finance_sales-details",
-              },
-              {
-                "title": "Sales by payment",
-                "page": "finance_sales-by-payment",
-              },
-              {
-                "title": "Sales by country",
-                "page": "finance_sales-by-country",
-              },
-              {
-                "title": "Shipping",
-                "page": "finance_shipping",
-              },
-              {
-                "title": "Annual summary",
-                "page": "finance_annual-summary",
-              },
-              {
-                "title": "Coupon details",
-                "page": "finance_coupon",
-              }
-            ]
-          },
-          "product": {
-            "title": "Product",
-            "icon": "timshopping-cart",
-            "disabled": true,
-            "submenus": [
-              {
-                "title": "Product 1",
-                "page": "",
-                "visible": false
-              }
-            ]
-          },
-          "merchandizing": {
-            "title": "Merchandizing",
-            "icon": "flash",
-            "submenus": [
-                {
-                    "title": "Merchandizing",
-                    "page": "merchandizing_overview"
-                },
-                {
-                    "title": "Merchandizing summary",
-                    "page": "merchandizing_summary"
-                },
-                {
-                    "title": "Merchandizing country",
-                    "page": "merchandizing_country"
-                }
-            ]
-          }
-        },
-        "table": {
-          "colors": {
-            "first_colulmn": "#f5f5f5",
-            "invoice_colulmn": "#febfdb",
-            "refund_colulmn": "#bffedb",
-            "positive": "#008000",
-            "negative": "#FF0000"
-          },
-          "sales_daily_sales_summary": {
-              "columnTitleA": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
-              "columnTitleB": {"title": () => "Previous week #" +reports.getDateB().format("WW YYYY")},
-              "columnTitleC": {"title": () => "Variance #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateB().format("WW YYYY")},
-              "columnTitleD": {"title": () => "Previous year #" + reports.getDateC().format("WW YYYY")},
-              "columnTitleE": {"title": () => "Variance #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateC().format("WW YYYY")},
-              "columnSun": {"title": () => "Sun"},
-              "columnMon": {"title": () => "Mon"},
-              "columnTue": {"title": () => "Tue"},
-              "columnWed": {"title": () => "Wed"},
-              "columnThu": {"title": () => "Thu"},
-              "columnFri": {"title": () => "Fri"},
-              "columnSat": {"title": () => "Sat"},
-              "columnWtd": {"title": () => "WTD"},
-              "columnWeek": {"title": () => "WoW total"}
-          },
-          "sales_ecommerce_weekly": {
-            "columnTitleA": {"title": () => ""},
-            "columnTitleB": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
-            "columnTitleC": {"title": () => "Previous week #" +reports.getDateB().format("WW YYYY")},
-            "columnTitleD": {"title": () => "Var #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateB().format("WW YYYY")},
-            "columnTitleE": {"title": () => "Previous year #" + reports.getDateC().format("WW YYYY")},
-            "columnTitleF": {"title": () => "Var #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateC().format("WW YYYY")},
-            "columnDayPrev": {"title": () => moment(filter_period.selectedDate).subtract(1,'week').format('ddd, DD.MM')},
-            "columnDayCurr": {"title": () => moment(filter_period.selectedDate).format('ddd, DD.MM')},
-            "columnDayVar": {"title": () => "Var %"},
-            "columnWtdPrev": {"title": () => "WTD, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
-            "columnWtdCurr": {"title": () => "WTD, #" + moment(filter_period.selectedDate).format('WW')},
-            "columnWtdVar": {"title": () => "WTD, Var %"},
-            "columnTotalPrev": {"title": () => "Total, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
-            "columnTotalCurr": {"title": () => "Total, #" + moment(filter_period.selectedDate).format('WW')},
-            "columnTotalVar": {"title": () => "Total, Var %"},
-            "columnSun": {"title": () => "Sun"},
-            "columnMon": {"title": () => "Mon"},
-            "columnTue": {"title": () => "Tue"},
-            "columnWed": {"title": () => "Wed"},
-            "columnThu": {"title": () => "Thu"},
-            "columnFri": {"title": () => "Fri"},
-            "columnSat": {"title": () => "Sat"},
-            "columnWtd": {"title": () => "WTD"},
-            "columnWeek": {"title": () => "WoW total"}
-          },
-          "sales_offline_retail_weekly": {
-            "columnTitleA": {"title": () => ""},
-            "columnTitleB": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
-            "columnTitleC": {"title": () => "Previous week #" +reports.getDateB().format("WW YYYY")},
-            "columnTitleD": {"title": () => "Var #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateB().format("WW YYYY")},
-            "columnTitleE": {"title": () => "Previous year #" + reports.getDateC().format("WW YYYY")},
-            "columnTitleF": {"title": () => "Var #" + reports.getDateA().format("WW YYYY") + " vs #" + reports.getDateC().format("WW YYYY")},
-            "columnDayPrev": {"title": () => moment(filter_period.selectedDate).subtract(1,'week').format('ddd, DD.MM')},
-            "columnDayCurr": {"title": () => moment(filter_period.selectedDate).format('ddd, DD.MM')},
-            "columnDayVar": {"title": () => "Var %"},
-            "columnWtdPrev": {"title": () => "WTD, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
-            "columnWtdCurr": {"title": () => "WTD, #" + moment(filter_period.selectedDate).format('WW')},
-            "columnWtdVar": {"title": () => "WTD, Var %"},
-            "columnTotalPrev": {"title": () => "Total, #" + moment(filter_period.selectedDate).subtract(1,'week').format('WW')},
-            "columnTotalCurr": {"title": () => "Total, #" + moment(filter_period.selectedDate).format('WW')},
-            "columnTotalVar": {"title": () => "Total, Var %"},
-            "columnSun": {"title": () => "Sun"},
-            "columnMon": {"title": () => "Mon"},
-            "columnTue": {"title": () => "Tue"},
-            "columnWed": {"title": () => "Wed"},
-            "columnThu": {"title": () => "Thu"},
-            "columnFri": {"title": () => "Fri"},
-            "columnSat": {"title": () => "Sat"},
-            "columnWtd": {"title": () => "WTD"},
-            "columnWeek": {"title": () => "WoW total"}
-          },
-          "sales_annual_sales_summary": {
-            "columnTitleA": {"title": () => "Current " + reports.getPeriodAFrom().format('YYYY')},
-            "columnTitleB": {"title": () => "Previous " + reports.getPeriodBFrom().format('YYYY')},
-            "columnTitleC": {"title": () => reports.getPeriodAFrom().format('YYYY') + " vs " + reports.getPeriodBFrom().format('YYYY')},
-            "columnJan": {"title": () => "Jan"},
-            "columnFeb": {"title": () => "Feb"},
-            "columnMar": {"title": () => "Mar"},
-            "columnApr": {"title": () => "Apr"},
-            "columnMay": {"title": () => "May"},
-            "columnJun": {"title": () => "Jun"},
-            "columnJul": {"title": () => "Jul"},
-            "columnAug": {"title": () => "Aug"},
-            "columnSep": {"title": () => "Sep"},
-            "columnOct": {"title": () => "Oct"},
-            "columnNov": {"title": () => "Nov"},
-            "columnDec": {"title": () => "Dec"},
-            "columnYtd": {"title": () => "YTD"},
-            "columnTotal": {"title": () => "Total"},
-          },
-          "sales_best_sellers": {
-            "columnRank": {"title": () => "Rank"},
-            "columnImage": {"title": () => "Image"},
-            "columnSku": {"title": () => "SKU"},
-            "columnSold": {"title": () => "Sold items"},
-            "columnOrig": {"title": () => "Original price"},
-            "columnPrice": {"title": () => "Price"},
-            "columnTotal": {"title": () => "Total sold"},
-            "columnName": {"title": () => "Product name"},
-          },
-          "finance_sales_summary": {
-            "columnTitle": {"title": () => ""},
-            "columnThis": {"title": () => appsmith.store.period},
-            "columnPrev": {"title": () => appsmith.store.compare},
-            "columnVar": {"title": () => "Variance"},
-          },
-          "finance_sales_by_country": {
-            "columnTitle": {"title": () => ""},
-            "columnCurr": {"title": () => filter_country.selectedOptionLabels.join()},
-            "columnGlob": {"title": () => "Global Total"},
-            "columnVar": {"title": () => "% of Global Total"},
-          },
-          "finance_annual_summary": {
+  getDateA: () => moment(dateCurr.selectedDate),
+  getDateB: () => this.getDateA().subtract(1, 'week'),
+  getDateC: () => this.getDateA().subtract(1, 'year'),
 
-          },
-          "finance_sales_details": {
-            "columnTitle": {"title": () => "Sku"},
-            "columnName": {"title": () => "Name"},
-            "columnPrice": {"title": () => "Price"},
-            "columnSpecial": {"title": () => "Special"},
-            "columnQty": {"title": () => "Qty"},
-            "columnQtyRefunded": {"title": () => "Qty refunded"},
-            "columnTotal": {"title": () => "Total"},
-            "columnRevenue": {"title": () => "Revenue"},
-            "columnRefunded": {"title": () => "Refunded"},
-            "columnNetQty": {"title": () => "NetQty"},
-            "columnNetSales": {"title": () => "Net Sales"},
-            "columnNetSalesVat": {"title": () => "Net Sales Vat"},
-            "columnNetTotalSales": {"title": () => "Net Total Sales"},
-            "columnCost": {"title": () => "Cost"},
-            "columnCostTotal": {"title": () => "Cost Total"},
-            "columnProfit": {"title": () => "Profit"},
-            "columnMargin": {"title": () => "Margin"},
-            "columnStock": {"title": () => "Stock"},
-          },
-          "finance_shipping": {
-            "columnTitle": {"title": () => "Method"},
-            "columnOrders": {"title": () => "Orders"},
-            "columnShipments": {"title": () => "Shipments"},
-            "columnQty": {"title": () => "Qty"},
-            "columnFreeQty": {"title": () => "Free qty"},
-            "columnAOV": {"title": () => "AOV"},
-            "columnShipping": {"title": () => "Shipping"},
-            "columnShippingVAT": {"title": () => "Shipping VAT"},
-            "columnTotalExVAT": {"title": () => "Total ex VAT"},
-            "columnTotalVAT": {"title": () => "Total VAT"},
-            "columnTotal": {"title": () => "Total "},
-            "columnShippingRefundedExVAT": {"title": () => "Shipping refunded ex VAT"},
-          },
-          "finance_coupon": {
-            "columnTitle": {"title": () => "Order Id"},
-            "columnCoupon": {"title": () => "Coupon"},
-            "columnPaymentType": {"title": () => "Payment type"},
-            "columnOrdersTotal": {"title": () => "Orders total"},
-            "columnOrdersSubtotal": {"title": () => "Orders subtotal"},
-            "columnOrdersShipping": {"title": () => "Orders shipping"},
-            "columnRefundsTotal": {"title": () => "Refunds total"},
-          }
-        },
+  getWeekAFrom: () => this.getDateA().startOf('week'),
+  getWeekATo: () => this.getDateA().endOf('week'),
+  getWeekBFrom: () => this.getDateB().startOf('week'),
+  getWeekBTo: () => this.getDateB().endOf('week'),
+  getWeekCFrom: () => this.getDateC().startOf('week'),
+  getWeekCTo: () => this.getDateC().endOf('week') ,
+  
+  getDateY: () => this.getDateA().subtract(1, 'year'),
+  getDateYY: () => this.getDateA().subtract(2, 'year'),
 
-        "filter": {
-          "payment": [
-              {
-                  "value": "adyen_cc",
-                  "label": "Adyen cc"
-              },
-              {
-                  "value": "adyen_hpp",
-                  "label": "Adyen hpp"
-              },
-              {
-                  "value": "paypal_express",
-                  "label": "Paypal express"
-              },
-              {
-                  "value": "globale",
-                  "label": "Global-e"
-              },
-              {
-                  "value": "klarna_kp",
-                  "label": "Klarna pk"
-              },
-              {
-                  "value": "free",
-                  "label": "Free"
-              },
-              {
-                  "value": "checkmo",
-                  "label": "Check mo"
-              },
-              {
-                  "value": "stripe",
-                  "label": "Stripe"
-              },
-              {
-                  "value": "braintree_paypal",
-                  "label": "Paypal braintree"
-              }
-          ],
-          "status": [
-            {
-                "value": "canceled",
-                "label": "Canceled"
-            },
-            {
-                "value": "closed",
-                "label": "Closed"
-            },
-            {
-                "value": "complete",
-                "label": "Complete"
-            },
-            {
-                "value": "holded",
-                "label": "Holded"
-            },
-            {
-                "value": "new",
-                "label": "New"
-            },
-            {
-                "value": "payment_review",
-                "label": "Payment Review"
-            },
-            {
-                "value": "pending_payment",
-                "label": "Pending Payment"
-            },
-            {
-                "value": "processing",
-                "label": "Processing"
-            }
-          ],
-          "channel": [
-            {
-              "label": "All",
-              "value": "_all",
-              "children": [
-                {
-                  "label": "Ecommerce All",
-                  "value": "_e_all",
-                  "children": [
-                      {
-                          "label": "UK",
-                          "value": "uk"
-                      },
-                      {
-                          "label": "EU",
-                          "value": "eu"
-                      },
-                      {
-                          "label": "US",
-                          "value": "us"
-                      }
-                  ]
-                },
-                {
-                  "label": "Offline All",
-                  "value": "_o_all",
-                  "children": [
-                      {
-                          "label": "offline retail",
-                          "value": "sq"
-                      }
-                  ]
-                }
-              ]  
-            }
-          ],
-          "channel_f": [
-            {
-              "label": "Ecommerce All",
-              "value": "_e_all",
-              "children": [
-                  {
-                      "label": "UK",
-                      "value": "uk"
-                  },
-                  {
-                      "label": "EU",
-                      "value": "eu"
-                  },
-                  {
-                      "label": "US",
-                      "value": "us"
-                  }
-              ]
-            }
-          ],
-          "period":[
-            {
-                "label": "This week",
-                "value": "week"
-            },
-            {
-                "label": "Date range",
-                "value": "date"
-            },
-            {
-                "label": "This month",
-                "value": "month"
-            },
-            {
-                "label": "This year",
-                "value": "year"
-            },
-            {
-                "label": "This fiscal year",
-                "value": "fyear"
-            },
-            {
-                "label": "Last week",
-                "value": "lweek"
-            },
-            {
-                "label": "Last month",
-                "value": "lmonth"
-            },
-            {
-                "label": "Last year",
-                "value": "lyear"
-            },
-            {
-                "label": "Last fiscal year",
-                "value": "lfyear"
-            },
-            {
-                "label": "Last 7 days",
-                "value": "7d"
-            },
-            {
-                "label": "Last 30 days",
-                "value": "30d"
-            },
-            {
-                "label": "Last 90 days",
-                "value": "90d"
-            },
-            {
-                "label": "Last 12 months",
-                "value": "12m"
-            }
-          ],
-          "country": [
-            {
-                "value": "AF",
-                "label": "Afghanistan"
-            },
-            {
-                "value": "AX",
-                "label": "Aland Islands"
-            },
-            {
-                "value": "AL",
-                "label": "Albania"
-            },
-            {
-                "value": "DZ",
-                "label": "Algeria"
-            },
-            {
-                "value": "AS",
-                "label": "American Samoa"
-            },
-            {
-                "value": "AD",
-                "label": "Andorra"
-            },
-            {
-                "value": "AO",
-                "label": "Angola"
-            },
-            {
-                "value": "AI",
-                "label": "Anguilla"
-            },
-            {
-                "value": "AQ",
-                "label": "Antarctica"
-            },
-            {
-                "value": "AG",
-                "label": "Antigua and Barbuda"
-            },
-            {
-                "value": "AR",
-                "label": "Argentina"
-            },
-            {
-                "value": "AM",
-                "label": "Armenia"
-            },
-            {
-                "value": "AW",
-                "label": "Aruba"
-            },
-            {
-                "value": "AU",
-                "label": "Australia"
-            },
-            {
-                "value": "AT",
-                "label": "Austria"
-            },
-            {
-                "value": "AZ",
-                "label": "Azerbaijan"
-            },
-            {
-                "value": "BS",
-                "label": "Bahamas"
-            },
-            {
-                "value": "BH",
-                "label": "Bahrain"
-            },
-            {
-                "value": "BD",
-                "label": "Bangladesh"
-            },
-            {
-                "value": "BB",
-                "label": "Barbados"
-            },
-            {
-                "value": "BY",
-                "label": "Belarus"
-            },
-            {
-                "value": "BE",
-                "label": "Belgium"
-            },
-            {
-                "value": "BZ",
-                "label": "Belize"
-            },
-            {
-                "value": "BJ",
-                "label": "Benin"
-            },
-            {
-                "value": "BM",
-                "label": "Bermuda"
-            },
-            {
-                "value": "BT",
-                "label": "Bhutan"
-            },
-            {
-                "value": "BO",
-                "label": "Bolivia, Plurinational State of"
-            },
-            {
-                "value": "BQ",
-                "label": "Bonaire, Sint Eustatius and Saba"
-            },
-            {
-                "value": "BA",
-                "label": "Bosnia and Herzegovina"
-            },
-            {
-                "value": "BW",
-                "label": "Botswana"
-            },
-            {
-                "value": "BV",
-                "label": "Bouvet Island"
-            },
-            {
-                "value": "BR",
-                "label": "Brazil"
-            },
-            {
-                "value": "IO",
-                "label": "British Indian Ocean Territory"
-            },
-            {
-                "value": "BN",
-                "label": "Brunei Darussalam"
-            },
-            {
-                "value": "BG",
-                "label": "Bulgaria"
-            },
-            {
-                "value": "BF",
-                "label": "Burkina Faso"
-            },
-            {
-                "value": "BI",
-                "label": "Burundi"
-            },
-            {
-                "value": "KH",
-                "label": "Cambodia"
-            },
-            {
-                "value": "CM",
-                "label": "Cameroon"
-            },
-            {
-                "value": "CA",
-                "label": "Canada"
-            },
-            {
-                "value": "CV",
-                "label": "Cape Verde"
-            },
-            {
-                "value": "KY",
-                "label": "Cayman Islands"
-            },
-            {
-                "value": "CF",
-                "label": "Central African Republic"
-            },
-            {
-                "value": "TD",
-                "label": "Chad"
-            },
-            {
-                "value": "CL",
-                "label": "Chile"
-            },
-            {
-                "value": "CN",
-                "label": "China"
-            },
-            {
-                "value": "CX",
-                "label": "Christmas Island"
-            },
-            {
-                "value": "CC",
-                "label": "Cocos (Keeling) Islands"
-            },
-            {
-                "value": "CO",
-                "label": "Colombia"
-            },
-            {
-                "value": "KM",
-                "label": "Comoros"
-            },
-            {
-                "value": "CG",
-                "label": "Congo"
-            },
-            {
-                "value": "CD",
-                "label": "Congo, the Democratic Republic of the"
-            },
-            {
-                "value": "CK",
-                "label": "Cook Islands"
-            },
-            {
-                "value": "CR",
-                "label": "Costa Rica"
-            },
-            {
-                "value": "CI",
-                "label": "Cote d'Ivoire"
-            },
-            {
-                "value": "HR",
-                "label": "Croatia"
-            },
-            {
-                "value": "CU",
-                "label": "Cuba"
-            },
-            {
-                "value": "CW",
-                "label": "Curacao"
-            },
-            {
-                "value": "CY",
-                "label": "Cyprus"
-            },
-            {
-                "value": "CZ",
-                "label": "Czech Republic"
-            },
-            {
-                "value": "DK",
-                "label": "Denmark"
-            },
-            {
-                "value": "DJ",
-                "label": "Djibouti"
-            },
-            {
-                "value": "DM",
-                "label": "Dominica"
-            },
-            {
-                "value": "DO",
-                "label": "Dominican Republic"
-            },
-            {
-                "value": "EC",
-                "label": "Ecuador"
-            },
-            {
-                "value": "EG",
-                "label": "Egypt"
-            },
-            {
-                "value": "SV",
-                "label": "El Salvador"
-            },
-            {
-                "value": "GQ",
-                "label": "Equatorial Guinea"
-            },
-            {
-                "value": "ER",
-                "label": "Eritrea"
-            },
-            {
-                "value": "EE",
-                "label": "Estonia"
-            },
-            {
-                "value": "ET",
-                "label": "Ethiopia"
-            },
-            {
-                "value": "FK",
-                "label": "Falkland Islands (Malvinas)"
-            },
-            {
-                "value": "FO",
-                "label": "Faroe Islands"
-            },
-            {
-                "value": "FJ",
-                "label": "Fiji"
-            },
-            {
-                "value": "FI",
-                "label": "Finland"
-            },
-            {
-                "value": "FR",
-                "label": "France"
-            },
-            {
-                "value": "GF",
-                "label": "French Guiana"
-            },
-            {
-                "value": "PF",
-                "label": "French Polynesia"
-            },
-            {
-                "value": "TF",
-                "label": "French Southern Territories"
-            },
-            {
-                "value": "GA",
-                "label": "Gabon"
-            },
-            {
-                "value": "GM",
-                "label": "Gambia"
-            },
-            {
-                "value": "GE",
-                "label": "Georgia"
-            },
-            {
-                "value": "DE",
-                "label": "Germany"
-            },
-            {
-                "value": "GH",
-                "label": "Ghana"
-            },
-            {
-                "value": "GI",
-                "label": "Gibraltar"
-            },
-            {
-                "value": "GR",
-                "label": "Greece"
-            },
-            {
-                "value": "GL",
-                "label": "Greenland"
-            },
-            {
-                "value": "GD",
-                "label": "Grenada"
-            },
-            {
-                "value": "GP",
-                "label": "Guadeloupe"
-            },
-            {
-                "value": "GU",
-                "label": "Guam"
-            },
-            {
-                "value": "GT",
-                "label": "Guatemala"
-            },
-            {
-                "value": "GG",
-                "label": "Guernsey"
-            },
-            {
-                "value": "GN",
-                "label": "Guinea"
-            },
-            {
-                "value": "GW",
-                "label": "Guinea-Bissau"
-            },
-            {
-                "value": "GY",
-                "label": "Guyana"
-            },
-            {
-                "value": "HT",
-                "label": "Haiti"
-            },
-            {
-                "value": "HM",
-                "label": "Heard Island and McDonald Islands"
-            },
-            {
-                "value": "VA",
-                "label": "Holy See (Vatican City State)"
-            },
-            {
-                "value": "HN",
-                "label": "Honduras"
-            },
-            {
-                "value": "HK",
-                "label": "Hong Kong"
-            },
-            {
-                "value": "HU",
-                "label": "Hungary"
-            },
-            {
-                "value": "IS",
-                "label": "Iceland"
-            },
-            {
-                "value": "IN",
-                "label": "India"
-            },
-            {
-                "value": "ID",
-                "label": "Indonesia"
-            },
-            {
-                "value": "IR",
-                "label": "Iran, Islamic Republic of"
-            },
-            {
-                "value": "IQ",
-                "label": "Iraq"
-            },
-            {
-                "value": "IE",
-                "label": "Ireland"
-            },
-            {
-                "value": "IM",
-                "label": "Isle of Man"
-            },
-            {
-                "value": "IL",
-                "label": "Israel"
-            },
-            {
-                "value": "IT",
-                "label": "Italy"
-            },
-            {
-                "value": "JM",
-                "label": "Jamaica"
-            },
-            {
-                "value": "JP",
-                "label": "Japan"
-            },
-            {
-                "value": "JE",
-                "label": "Jersey"
-            },
-            {
-                "value": "JO",
-                "label": "Jordan"
-            },
-            {
-                "value": "KZ",
-                "label": "Kazakhstan"
-            },
-            {
-                "value": "KE",
-                "label": "Kenya"
-            },
-            {
-                "value": "KI",
-                "label": "Kiribati"
-            },
-            {
-                "value": "KP",
-                "label": "Korea, Democratic People's Republic of"
-            },
-            {
-                "value": "KR",
-                "label": "Korea, Republic of"
-            },
-            {
-                "value": "KW",
-                "label": "Kuwait"
-            },
-            {
-                "value": "KG",
-                "label": "Kyrgyzstan"
-            },
-            {
-                "value": "LA",
-                "label": "Lao People's Democratic Republic"
-            },
-            {
-                "value": "LV",
-                "label": "Latvia"
-            },
-            {
-                "value": "LB",
-                "label": "Lebanon"
-            },
-            {
-                "value": "LS",
-                "label": "Lesotho"
-            },
-            {
-                "value": "LR",
-                "label": "Liberia"
-            },
-            {
-                "value": "LY",
-                "label": "Libya"
-            },
-            {
-                "value": "LI",
-                "label": "Liechtenstein"
-            },
-            {
-                "value": "LT",
-                "label": "Lithuania"
-            },
-            {
-                "value": "LU",
-                "label": "Luxembourg"
-            },
-            {
-                "value": "MO",
-                "label": "Macao"
-            },
-            {
-                "value": "MK",
-                "label": "Macedonia, the Former Yugoslav Republic of"
-            },
-            {
-                "value": "MG",
-                "label": "Madagascar"
-            },
-            {
-                "value": "MW",
-                "label": "Malawi"
-            },
-            {
-                "value": "MY",
-                "label": "Malaysia"
-            },
-            {
-                "value": "MV",
-                "label": "Maldives"
-            },
-            {
-                "value": "ML",
-                "label": "Mali"
-            },
-            {
-                "value": "MT",
-                "label": "Malta"
-            },
-            {
-                "value": "MH",
-                "label": "Marshall Islands"
-            },
-            {
-                "value": "MQ",
-                "label": "Martinique"
-            },
-            {
-                "value": "MR",
-                "label": "Mauritania"
-            },
-            {
-                "value": "MU",
-                "label": "Mauritius"
-            },
-            {
-                "value": "YT",
-                "label": "Mayotte"
-            },
-            {
-                "value": "MX",
-                "label": "Mexico"
-            },
-            {
-                "value": "FM",
-                "label": "Micronesia, Federated States of"
-            },
-            {
-                "value": "MD",
-                "label": "Moldova, Republic of"
-            },
-            {
-                "value": "MC",
-                "label": "Monaco"
-            },
-            {
-                "value": "MN",
-                "label": "Mongolia"
-            },
-            {
-                "value": "ME",
-                "label": "Montenegro"
-            },
-            {
-                "value": "MS",
-                "label": "Montserrat"
-            },
-            {
-                "value": "MA",
-                "label": "Morocco"
-            },
-            {
-                "value": "MZ",
-                "label": "Mozambique"
-            },
-            {
-                "value": "MM",
-                "label": "Myanmar"
-            },
-            {
-                "value": "NA",
-                "label": "Namibia"
-            },
-            {
-                "value": "NR",
-                "label": "Nauru"
-            },
-            {
-                "value": "NP",
-                "label": "Nepal"
-            },
-            {
-                "value": "NL",
-                "label": "Netherlands"
-            },
-            {
-                "value": "NC",
-                "label": "New Caledonia"
-            },
-            {
-                "value": "NZ",
-                "label": "New Zealand"
-            },
-            {
-                "value": "NI",
-                "label": "Nicaragua"
-            },
-            {
-                "value": "NE",
-                "label": "Niger"
-            },
-            {
-                "value": "NG",
-                "label": "Nigeria"
-            },
-            {
-                "value": "NU",
-                "label": "Niue"
-            },
-            {
-                "value": "NF",
-                "label": "Norfolk Island"
-            },
-            {
-                "value": "MP",
-                "label": "Northern Mariana Islands"
-            },
-            {
-                "value": "NO",
-                "label": "Norway"
-            },
-            {
-                "value": "OM",
-                "label": "Oman"
-            },
-            {
-                "value": "PK",
-                "label": "Pakistan"
-            },
-            {
-                "value": "PW",
-                "label": "Palau"
-            },
-            {
-                "value": "PS",
-                "label": "Palestine, State of"
-            },
-            {
-                "value": "PA",
-                "label": "Panama"
-            },
-            {
-                "value": "PG",
-                "label": "Papua New Guinea"
-            },
-            {
-                "value": "PY",
-                "label": "Paraguay"
-            },
-            {
-                "value": "PE",
-                "label": "Peru"
-            },
-            {
-                "value": "PH",
-                "label": "Philippines"
-            },
-            {
-                "value": "PN",
-                "label": "Pitcairn"
-            },
-            {
-                "value": "PL",
-                "label": "Poland"
-            },
-            {
-                "value": "PT",
-                "label": "Portugal"
-            },
-            {
-                "value": "PR",
-                "label": "Puerto Rico"
-            },
-            {
-                "value": "QA",
-                "label": "Qatar"
-            },
-            {
-                "value": "RE",
-                "label": "Runion"
-            },
-            {
-                "value": "RO",
-                "label": "Romania"
-            },
-            {
-                "value": "RU",
-                "label": "Russian Federation"
-            },
-            {
-                "value": "RW",
-                "label": "Rwanda"
-            },
-            {
-                "value": "BL",
-                "label": "Saint Barthelemy"
-            },
-            {
-                "value": "SH",
-                "label": "Saint Helena, Ascension and Tristan da Cunha"
-            },
-            {
-                "value": "KN",
-                "label": "Saint Kitts and Nevis"
-            },
-            {
-                "value": "LC",
-                "label": "Saint Lucia"
-            },
-            {
-                "value": "MF",
-                "label": "Saint Martin (French part)"
-            },
-            {
-                "value": "PM",
-                "label": "Saint Pierre and Miquelon"
-            },
-            {
-                "value": "VC",
-                "label": "Saint Vincent and the Grenadines"
-            },
-            {
-                "value": "WS",
-                "label": "Samoa"
-            },
-            {
-                "value": "SM",
-                "label": "San Marino"
-            },
-            {
-                "value": "ST",
-                "label": "Sao Tome and Principe"
-            },
-            {
-                "value": "SA",
-                "label": "Saudi Arabia"
-            },
-            {
-                "value": "SN",
-                "label": "Senegal"
-            },
-            {
-                "value": "RS",
-                "label": "Serbia"
-            },
-            {
-                "value": "SC",
-                "label": "Seychelles"
-            },
-            {
-                "value": "SL",
-                "label": "Sierra Leone"
-            },
-            {
-                "value": "SG",
-                "label": "Singapore"
-            },
-            {
-                "value": "SX",
-                "label": "Sint Maarten (Dutch part)"
-            },
-            {
-                "value": "SK",
-                "label": "Slovakia"
-            },
-            {
-                "value": "SI",
-                "label": "Slovenia"
-            },
-            {
-                "value": "SB",
-                "label": "Solomon Islands"
-            },
-            {
-                "value": "SO",
-                "label": "Somalia"
-            },
-            {
-                "value": "ZA",
-                "label": "South Africa"
-            },
-            {
-                "value": "GS",
-                "label": "South Georgia and the South Sandwich Islands"
-            },
-            {
-                "value": "SS",
-                "label": "South Sudan"
-            },
-            {
-                "value": "ES",
-                "label": "Spain"
-            },
-            {
-                "value": "LK",
-                "label": "Sri Lanka"
-            },
-            {
-                "value": "SD",
-                "label": "Sudan"
-            },
-            {
-                "value": "SR",
-                "label": "Suriname"
-            },
-            {
-                "value": "SJ",
-                "label": "Svalbard and Jan Mayen"
-            },
-            {
-                "value": "SZ",
-                "label": "Swaziland"
-            },
-            {
-                "value": "SE",
-                "label": "Sweden"
-            },
-            {
-                "value": "CH",
-                "label": "Switzerland"
-            },
-            {
-                "value": "SY",
-                "label": "Syrian Arab Republic"
-            },
-            {
-                "value": "TW",
-                "label": "Taiwan, Province of China"
-            },
-            {
-                "value": "TJ",
-                "label": "Tajikistan"
-            },
-            {
-                "value": "TZ",
-                "label": "Tanzania, United Republic of"
-            },
-            {
-                "value": "TH",
-                "label": "Thailand"
-            },
-            {
-                "value": "TL",
-                "label": "Timor-Leste"
-            },
-            {
-                "value": "TG",
-                "label": "Togo"
-            },
-            {
-                "value": "TK",
-                "label": "Tokelau"
-            },
-            {
-                "value": "TO",
-                "label": "Tonga"
-            },
-            {
-                "value": "TT",
-                "label": "Trinidad and Tobago"
-            },
-            {
-                "value": "TN",
-                "label": "Tunisia"
-            },
-            {
-                "value": "TR",
-                "label": "Turkey"
-            },
-            {
-                "value": "TM",
-                "label": "Turkmenistan"
-            },
-            {
-                "value": "TC",
-                "label": "Turks and Caicos Islands"
-            },
-            {
-                "value": "TV",
-                "label": "Tuvalu"
-            },
-            {
-                "value": "UG",
-                "label": "Uganda"
-            },
-            {
-                "value": "UA",
-                "label": "Ukraine"
-            },
-            {
-                "value": "AE",
-                "label": "United Arab Emirates"
-            },
-            {
-                "value": "GB",
-                "label": "United Kingdom"
-            },
-            {
-                "value": "US",
-                "label": "United States"
-            },
-            {
-                "value": "UM",
-                "label": "United States Minor Outlying Islands"
-            },
-            {
-                "value": "UY",
-                "label": "Uruguay"
-            },
-            {
-                "value": "UZ",
-                "label": "Uzbekistan"
-            },
-            {
-                "value": "VU",
-                "label": "Vanuatu"
-            },
-            {
-                "value": "VE",
-                "label": "Venezuela, Bolivarian Republic of"
-            },
-            {
-                "value": "VN",
-                "label": "Viet Nam"
-            },
-            {
-                "value": "VG",
-                "label": "Virgin Islands, British"
-            },
-            {
-                "value": "VI",
-                "label": "Virgin Islands, U.S."
-            },
-            {
-                "value": "WF",
-                "label": "Wallis and Futuna"
-            },
-            {
-                "value": "EH",
-                "label": "Western Sahara"
-            },
-            {
-                "value": "YE",
-                "label": "Yemen"
-            },
-            {
-                "value": "ZM",
-                "label": "Zambia"
-            },
-            {
-                "value": "ZW",
-                "label": "Zimbabwe"
-            }
-          ]
-        }
+  getYearAFrom: () => this.getDateA().startOf('year'),
+  getYearATo: () => this.getDateA().endOf('year'),
+  getYearBFrom: () => this.getDateY().startOf('year'),
+  getYearBTo: () => this.getDateY().endOf('year'),
+  getYearCFrom: () => this.getDateYY().startOf('year'),
+  getYearCTo: () => this.getDateYY().endOf('year'),
+
+  getWeekGroup: (period) => {
+      period = moment(period)
+          console.log(period.format("YYYY-MM-DD") + " " + this.getWeekAFrom().format("YYYY-MM-DD") + " " + this.getWeekATo().format("YYYY-MM-DD"))
+      if (period.isBetween(this.getWeekAFrom(), this.getWeekATo(), undefined, '[]')) return 1
+      else if (period.isBetween(this.getWeekBFrom(), this.getWeekBTo(), undefined, '[]')) return 2
+      else if (period.isBetween(this.getWeekCFrom(), this.getWeekCTo(), undefined, '[]')) return 3;
+      else return 0;
+  },
+
+  getYearGroup: (period) => {
+      period = moment(period)
+      if (period.isBetween(this.getYearAFrom(), this.getYearATo(), undefined, '[]')) return 1
+      else if (period.isBetween(this.getYearBFrom(), this.getYearBTo(), undefined, '[]')) return 2
+      else if (period.isBetween(this.getYearCFrom(), this.getYearCTo(), undefined, '[]')) return 3;
+      else return 0;
+  },
+ 
+  refresh: () => {
+      filter.confirm()
+      cube.run()
+  },
+ 
+  getUnit: (a) => {
+      if (filter_entity.selectedOptionValue == 'invoices') {
+          if (filter_unit.selectedOptionValue == 'number') return a.invoicesCount
+          if (filter_unit.selectedOptionValue == 'items') return a.invoicesItems
+          return a.invoicesQty
+      } else
+      if (filter_entity.selectedOptionValue == 'refunds') {
+          if (filter_unit.selectedOptionValue == 'number') return a.refundsCount
+          if (filter_unit.selectedOptionValue == 'items') return a.refundsItems
+          return a.refundsQty
+      } else
+      if (filter_entity.selectedOptionValue == 'net') {
+          if (filter_unit.selectedOptionValue == 'number') return a.invoicesCount - a.refundsCount
+          if (filter_unit.selectedOptionValue == 'items') return a.invoicesItems - a.refundsItems
+          return a.invoicesQty - a.refundsQty
+      } else
+      if (filter_entity.selectedOptionValue == 'shipments') {
+          if (filter_unit.selectedOptionValue == 'number') return a.shipmentsCount
+          if (filter_unit.selectedOptionValue == 'items') return a.shipmentsItems
+          return a.shipmentsQty
+      } else {
+          if (filter_unit.selectedOptionValue == 'number') return a.ordersCount
+          if (filter_unit.selectedOptionValue == 'items') return a.ordersItems
+          return a.ordersQty
       }
-    }
-})
+  },
+
+  getRevenue: (a) => {
+      if (filter_entity.selectedOptionValue == 'refunds') {
+          if (filter_revenue.selectedOptionValue == 'tax') return a.refundsTax ?  a.refundsTax : 0
+          if (filter_revenue.selectedOptionValue == 'discount') return Math.abs(a.refundsDiscount ? a.refundsDiscount : 0)
+          return a.refundsTotal
+      } else
+      if (filter_entity.selectedOptionValue == 'net') {
+          if (filter_unit.selectedOptionValue == 'tax') return a.invoicesTax - a.refundsTax
+          if (filter_unit.selectedOptionValue == 'discount') return Math.abs(a.invoicesDiscount) - Math.abs(a.refundsDiscount)
+          return a.invoicesTotal - a.refundsTotal
+      } else
+      if (filter_entity.selectedOptionValue == 'invoices') {
+          if (filter_revenue.selectedOptionValue == 'tax') return a.invoicesTax ? a.invoicesTax : 0
+          if (filter_revenue.selectedOptionValue == 'discount') return Math.abs(a.invoicesDiscount ? a.invoicesDiscount : 0)
+          return a.invoicesTotal ? a.invoicesTotal : 0
+      } else
+      if (filter_entity.selectedOptionValue == 'shipments') {
+          if (filter_revenue.selectedOptionValue == 'tax') return a.shipmentsTax ? a.shipmentsTax : 0
+          if (filter_revenue.selectedOptionValue == 'discount') return Math.abs(a.shipmentsDiscount ? a.shipmentsDiscount : 0)
+          return a.shipmentsTotal ? a.shipmentsTotal : 0
+      } else {
+          if (filter_revenue.selectedOptionValue == 'tax') return a.ordersTax ? a.ordersTax : 0
+          if (filter_revenue.selectedOptionValue == 'discount') return Math.abs(a.ordersDiscount ? a.ordersDiscount : 0)
+          return a.ordersTotal ? a.ordersTotal : 0
+      }
+  },
+
+  getEntityTitle: (a) => {
+      if (filter_entity.selectedOptionValue == 'refunds') {
+          return 'refunds'
+      } else
+      if (filter_entity.selectedOptionValue == 'invoices') {
+          return 'sales'
+      } else
+      if (filter_entity.selectedOptionValue == 'shipments') {
+          return 'shipments'
+      } else
+      if (filter_entity.selectedOptionValue == 'net') {
+          return 'net sales'
+      }
+      return 'orders'
+  },
+
+  getRevenueTitle: (a) => {
+      if (filter_revenue.selectedOptionValue == 'tax') {
+          return 'tax'
+      } else
+      if (filter_revenue.selectedOptionValue == 'discount') {
+          return 'discount'
+      }
+      return 'revenue'
+  },
+
+  
+  getUnitTitle: (a) => {
+      if (filter_unit.selectedOptionValue == 'number') {
+          return 'count'
+      } else
+      if (filter_unit.selectedOptionValue == 'items') {
+          return 'items'
+      }
+      return 'quantity'
+  },
+
+
+  chartUnits:(grp, what) => {
+      let res = cube.data.data.cube.reduce((x, a) => {
+          a = a.allSales
+          if (this.getWeekGroup(a.period.day) == grp) {
+              x[moment(a.period.day).day()]['value'] += 
+                what == 'unit' ? this.getUnit(a) : this.getRevenue(a)
+          }
+          return x
+      }, [{'value':0},{'value':0},{'value':0},{'value':0},{'value':0},{'value':0},{'value':0}])
+
+      for (var i = 1; i < 7; i++) {
+          for (var j = 0; j < i; j++) {
+              res[i]['value'] += res[j]['value']
+          }
+      }
+      return res
+  },
+  
+ _report: (grp) => {
+     var e1 = cube.data.data.cube.reduce((x, a) => {
+         a = a.allSales
+         x[moment(a.period.day).day()] += this.getWeekGroup(a.period.day) == grp ? this.getUnit(a) : 0
+         return x
+     }, {'title': 'Gross ' + this.getEntityTitle() + ' ' + this.getUnitTitle(), 0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 'w':0, 't':0});
+
+     var e2 = cube.data.data.cube.reduce((x, a) => {
+         a = a.allSales
+         x[moment(a.period.day).day()] += this.getWeekGroup(a.period.day) == grp ? this.getRevenue(a) : 0
+         return x
+     }, {'title': 'Gross ' + this.getEntityTitle() + ' ' + this.getRevenueTitle(), 0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 'w':0, 't':0});
+         
+     return [e1, e2].map((e) => {
+         for (var i = 0; i < 7; i++) {
+             e['w'] += i <= this.getDateA().day() ? e[i] : 0
+             e['t'] += e[i] ? e[i] : 0
+         }
+         return e
+     })
+ },
+
+ report: (grp) => {
+     return this._report(grp).map((e) => {
+         for (var idx in e)
+             if (idx != 'title') e[idx] = format.format(e.title.includes('revenue') ? '£' : ' ', e[idx], true)
+         return e
+     })
+ },
+
+ report_diff(grp1, grp2) {
+     var rep1 = this._report(grp1)
+     var rep2 = this._report(grp2)
+
+     return rep1.map((r1) => {
+         var r2 = rep2.reduce((c, r0) => {return r0.title == r1.title ? r0 : c}, {})
+         var res = {'title': r1['title']}
+         for (var idx in r1)
+             if (idx != 'title') res[idx] = format.percent(r1[idx], r2[idx])
+         return res
+     })
+ }
+}

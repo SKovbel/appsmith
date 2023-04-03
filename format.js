@@ -50,9 +50,10 @@
         return val && val.length > 0 ? val.replace(/[^\d.-]/g, '') : ''
     }
 
-    exports.colorizeRow = (val) => {
+    exports.colorizeRow = (val, negativeOnly) => {
         const v = format.toInt(val)
         if (v == 0) return ''
+        if (v > 0 && negativeOnly) return ''
         return v > 0 
             ? kitroyale.config.ui.table.colors.positive 
             : kitroyale.config.ui.table.colors.negative
