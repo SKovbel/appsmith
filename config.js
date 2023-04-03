@@ -419,12 +419,12 @@
           ],
           "period":[
             {
-                "label": "Date range",
-                "value": "date"
-            },
-            {
                 "label": "This week",
                 "value": "week"
+            },
+            {
+                "label": "Date range",
+                "value": "date"
             },
             {
                 "label": "This month",
