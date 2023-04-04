@@ -232,6 +232,18 @@
         : ''
 
     exports.paymentCondition = () => filter_payment.selectedOptionValues.length 
-        ? 'payment: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
+    ? 'payment: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
+    : ''
+
+    exports.sizeCondition = () => filter_size.selectedOptionValues.length 
+        ? 'size: {in: '+ filter.arrayToString(filter_size.selectedOptionValues) + '}'
+        : ''
+
+    exports.colorCondition = () => filter_color.selectedOptionValues.length 
+        ? 'color: {in: '+ filter.arrayToString(filter_color.selectedOptionValues) + '}'
+        : ''
+
+    exports.categoryCondition = () => filter_category.selectedOptionValues.length 
+        ? 'category: {in: '+ filter.arrayToString(filter_category.selectedOptionValues) + '}'
         : ''
 })
