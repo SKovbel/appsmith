@@ -84,10 +84,6 @@
                 "page": "finance_poduct-details",
               },
               {
-                "title": "Sales details",
-                "page": "finance_sales-details",
-              },
-              {
                 "title": "Sales by payment",
                 "page": "finance_sales-by-payment",
               },
