@@ -63,8 +63,8 @@
                 "page": "finance_finance-overview",
               },
               {
-                "title": "Sale summary",
-                "page": "finance_sales-summary",
+                "title": "Product detail",
+                "page": "finance_poduct-details",
               },
               {
                 "title": "Sales details",

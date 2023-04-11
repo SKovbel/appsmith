@@ -46,6 +46,18 @@
         return arr
     }
 
+    exports.currency = (v, hideZero, fractions) => {
+        if (v === '' || v === null || isNaN(v)) return ''
+        if (v === 0 && hideZero) return ''
+        fractions = fractions ? fractions : 0
+        const formater = new Intl.NumberFormat(kitroyale.config.ui.locale, {
+            style: 'currency',
+            currency: kitroyale.config.ui.currency,
+            maximumFractionDigits: fractions
+        });
+        return formater.format(v).replace(/\s/g, '')
+    }
+   
     exports.toInt = (val) => {
         return val && (typeof val === 'string' || val instanceof String) 
             ? parseInt(val.replace(/[^\d.-]/g, '')) 
