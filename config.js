@@ -120,6 +120,7 @@
           "merchandizing": {
             "title": "Merchandizing",
             "icon": "flash",
+            "disabled": true,
             "submenus": [
                 {
                     "title": "Merchandizing",
