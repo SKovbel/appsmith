@@ -55,6 +55,7 @@
             storeValue('compare', appsmith.store.compareFrom + ' - ' + appsmith.store.compareTo)
             storeValue('short', 'pp')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         } else if (range == 'week') {
             storeValue('periodFrom', moment(Date()).startOf('week').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).endOf('week').format('YYYY-MM-DD'))
@@ -66,6 +67,7 @@
             storeValue('compare', 'Previous week')
             storeValue('short', 'pw')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         } else if (range == 'month') {
             storeValue('periodFrom', moment(Date()).startOf('month').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).endOf('month').format('YYYY-MM-DD'))
@@ -77,6 +79,7 @@
             storeValue('compare', 'Previous month')
             storeValue('short', 'pm')
             storeValue('year', 'py')
+            storeValue('interval', 'week')
         } else if (range == 'year') {
             storeValue('periodFrom', moment(Date()).startOf('year').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).endOf('year').format('YYYY-MM-DD'))
@@ -88,6 +91,7 @@
             storeValue('compare', 'Previous year')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
+            storeValue('interval', 'month')
         } else if (range == 'fyear') {
             storeValue('periodFrom', '2022-04-06')
             storeValue('periodTo', '2023-04-05')
@@ -99,6 +103,7 @@
             storeValue('compare', 'Previous fiscal year')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
+            storeValue('interval', 'month')
         } else if (range == 'lweek') {
             storeValue('periodFrom', moment(Date()).subtract(1, 'week').startOf('week').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).subtract(1, 'week').endOf('week').format('YYYY-MM-DD'))
@@ -110,6 +115,7 @@
             storeValue('compare', 'Before last week')
             storeValue('short', 'pw')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         } else if (range == 'lmonth') {
             storeValue('periodFrom', moment(Date()).subtract(1, 'month').startOf('month').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).subtract(1, 'month').endOf('month').format('YYYY-MM-DD'))
@@ -121,6 +127,7 @@
             storeValue('compare', 'Before last month')
             storeValue('short', 'pm')
             storeValue('year', 'py')
+            storeValue('interval', 'week')
         } else if (range == 'lyear') {
             storeValue('periodFrom', moment(Date()).subtract(1, 'year').startOf('year').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).subtract(1, 'year').endOf('year').format('YYYY-MM-DD'))
@@ -132,6 +139,7 @@
             storeValue('compare', 'Before last year')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
+            storeValue('interval', 'month')
         } else if (range == 'lfyear') {
             storeValue('periodFrom', '2021-04-06')
             storeValue('periodTo', '2022-04-05')
@@ -143,6 +151,7 @@
             storeValue('compare', 'Before last fiscal year')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
+            storeValue('interval', 'month')
         } else if (range == '7d') {
             storeValue('periodFrom', moment(Date()).subtract(7, 'day').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).format('YYYY-MM-DD'))
@@ -154,6 +163,7 @@
             storeValue('compare', 'Last 7-14 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         } else if (range == '30d') {
             storeValue('periodFrom', moment(Date()).subtract(30, 'day').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).format('YYYY-MM-DD'))
@@ -165,6 +175,7 @@
             storeValue('compare', 'Last 30-60 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         } else if (range == '90d') {
             storeValue('periodFrom', moment(Date()).subtract(90, 'day').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).format('YYYY-MM-DD'))
@@ -176,6 +187,7 @@
             storeValue('compare', 'Last 90-180 days')
             storeValue('short', 'pd')
             storeValue('year', 'py')
+            storeValue('interval', 'week')
         } else if (range == '12m') {
             storeValue('periodFrom', moment(Date()).subtract(12, 'month').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).format('YYYY-MM-DD'))
@@ -187,6 +199,7 @@
             storeValue('compare', 'Last 12-24 months')
             storeValue('short', 'py')
             storeValue('year', 'p2y')
+            storeValue('interval', 'month')
         } else {
             storeValue('periodFrom', moment(Date()).startOf('week').format('YYYY-MM-DD'))
             storeValue('periodTo', moment(Date()).endOf('week').format('YYYY-MM-DD'))
@@ -198,6 +211,7 @@
             storeValue('compare', 'Before last week')
             storeValue('short', 'pw')
             storeValue('year', 'py')
+            storeValue('interval', 'day')
         }
     }
 
