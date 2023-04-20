@@ -385,15 +385,15 @@
                   "value": "_e_all",
                   "children": [
                       {
-                          "label": "Uk",
+                          "label": "UK",
                           "value": "uk"
                       },
                       {
-                          "label": "Eu",
+                          "label": "EU",
                           "value": "eu"
                       },
                       {
-                          "label": "Us",
+                          "label": "US",
                           "value": "us"
                       }
                   ]
@@ -417,15 +417,15 @@
               "value": "_e_all",
               "children": [
                   {
-                      "label": "Uk",
+                      "label": "UK",
                       "value": "uk"
                   },
                   {
-                      "label": "Eu",
+                      "label": "EU",
                       "value": "eu"
                   },
                   {
-                      "label": "Us",
+                      "label": "US",
                       "value": "us"
                   }
               ]
