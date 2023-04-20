@@ -393,7 +393,7 @@
                           "value": "eu"
                       },
                       {
-                          "label": "Uu",
+                          "label": "Us",
                           "value": "us"
                       }
                   ]
