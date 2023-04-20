@@ -399,7 +399,7 @@
                   ]
                 },
                 {
-                  "label": "Offline a",
+                  "label": "Offline all",
                   "value": "_o_all",
                   "children": [
                       {
