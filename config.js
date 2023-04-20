@@ -381,29 +381,29 @@
               "value": "_all",
               "children": [
                 {
-                  "label": "Ecommerce All",
+                  "label": "Ecommerce all",
                   "value": "_e_all",
                   "children": [
                       {
-                          "label": "UK",
+                          "label": "Uk",
                           "value": "uk"
                       },
                       {
-                          "label": "EU",
+                          "label": "Eu",
                           "value": "eu"
                       },
                       {
-                          "label": "US",
+                          "label": "Uu",
                           "value": "us"
                       }
                   ]
                 },
                 {
-                  "label": "Offline All",
+                  "label": "Offline a",
                   "value": "_o_all",
                   "children": [
                       {
-                          "label": "offline retail",
+                          "label": "Offline retail",
                           "value": "sq"
                       }
                   ]
@@ -413,19 +413,19 @@
           ],
           "channel_f": [
             {
-              "label": "Ecommerce All",
+              "label": "Ecommerce all",
               "value": "_e_all",
               "children": [
                   {
-                      "label": "UK",
+                      "label": "Uk",
                       "value": "uk"
                   },
                   {
-                      "label": "EU",
+                      "label": "Eu",
                       "value": "eu"
                   },
                   {
-                      "label": "US",
+                      "label": "Us",
                       "value": "us"
                   }
               ]
