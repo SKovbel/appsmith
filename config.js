@@ -17,20 +17,6 @@
         "local": "en-GB",
         "currency": "GBP",
         "currencySign": "£",
-        "timeZone": "Europe/London",
-        "data": {
-            "payments": {
-                "adyen_cc": "Adyen cc",
-                "adyen_hpp": "Adyen hpp",
-                "paypal_express": "Paypal",
-                "globale": "Global-e",
-                "klarna_kp": "Klarna",
-                "free": "Free",
-                "checkmo": "Check mo",
-                "stripe": "Stripe",
-                "braintree_paypal": "Paypal braintree"
-            }
-        },
         "topMenu": {
           "colors": {
             "topColor": '#64748b',
@@ -330,7 +316,7 @@
                   "label": "Free"
               },
               {
-                  "value": "checkmo",- its make 1 file,
+                  "value": "checkmo",
                 "value": "canceled",
                 "label": "Canceled"
             },
