@@ -46,18 +46,23 @@
         return arr
     }
 
-    exports.currency = (v, hideZero, fractions) => {
-        if (v === '' || v === null || isNaN(v)) return ''
-        if (v === 0 && hideZero) return ''
-        fractions = fractions ? fractions : 0
-        const formater = new Intl.NumberFormat(kitroyale.config.ui.locale, {
+    exports.currency = (v, maxFraction, minFraction) => {
+        if (v === '' || v === null || isNaN(v)) return v
+        var settings = {
             style: 'currency',
             currency: kitroyale.config.ui.currency,
-            maximumFractionDigits: fractions
-        });
-        return formater.format(v).replace(/\s/g, '')
+        }
+        if (maxFraction > 0 || maxFraction === 0 || maxFraction === '0') {
+            settings['maximumFractionDigits'] = maxFraction
+        }
+        if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
+            settings['minimumFractionDigits'] = minFraction
+        }
+        const formater = new Intl.NumberFormat(kitroyale.config.ui.locale, settings);
+        var result = formater.format(v).replace(/[^0-9\,\.\-]/i, '').trim()
+        return kitroyale.config.ui.currencySign + result
     }
-   
+
     exports.toInt = (val) => {
         return val && (typeof val === 'string' || val instanceof String) 
             ? parseInt(val.replace(/[^\d.-]/g, '')) 

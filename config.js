@@ -16,6 +16,7 @@
       "ui": {
         "local": "en-GB",
         "currency": "GBP",
+        "currencySign": "£",
         "timeZone": "Europe/London",
         "data": {
             "payments": {
@@ -329,20 +330,7 @@
                   "label": "Free"
               },
               {
-                  "value": "checkmo",
-                  "label": "Check mo"
-              },
-              {
-                  "value": "stripe",
-                  "label": "Stripe"
-              },
-              {
-                  "value": "braintree_paypal",
-                  "label": "Paypal braintree"
-              }
-          ],
-          "status": [
-            {
+                  "value": "checkmo",- its make 1 file,
                 "value": "canceled",
                 "label": "Canceled"
             },
