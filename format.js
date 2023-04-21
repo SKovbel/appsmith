@@ -58,9 +58,32 @@
         if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
             settings['minimumFractionDigits'] = minFraction
         }
-        const formater = new Intl.NumberFormat(kitroyale.config.ui.locale, settings);
-        var result = formater.format(v).replace(/[^0-9\,\.\-]/i, '').trim()
+        const intl = new Intl.NumberFormat(kitroyale.config.ui.locale, settings);
+        var result = intl.format(v)
+            .replace(/\s/i, '')
+            .replace(/[^0-9\,\.\-]/i, '')
+            .trim()
         return kitroyale.config.ui.currencySign + result
+    }
+
+
+    var currency = function (v, maxFraction, minFraction) {
+        if (v === '' || v === null || isNaN(v)) return ''
+        if (v === 0 && hideZero) return ''
+        var settings = {
+            style: 'currency',
+            currency: 'GBP'
+        }
+        if (maxFraction > 0 || maxFraction === 0 || maxFraction === '0') {
+            settings['maximumFractionDigits'] = maxFraction
+        }
+        if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
+            settings['minimumFractionDigits'] = minFraction
+        }
+        const formater = new Intl.NumberFormat('en-GB', settings);
+        var result = formater.format(v)
+        result = result.replace(/[^0-9\,\.\-]/i, '').trim()
+        return '$' + result
     }
 
     exports.toInt = (val) => {

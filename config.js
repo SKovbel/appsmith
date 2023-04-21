@@ -316,7 +316,7 @@
                   "label": "Free"
               },
               {
-                  "value": "checkmo",
+                "value": "checkmo",
                 "value": "canceled",
                 "label": "Canceled"
             },
