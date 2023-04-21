@@ -330,7 +330,7 @@
                   "label": "Free"
               },
               {
-                  "value": "checkmo",- its make 1 file,
+                  "value": "checkmo",
                 "value": "canceled",
                 "label": "Canceled"
             },
