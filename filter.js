@@ -231,9 +231,11 @@
         ? 'sku: {contains: "' + filter_sku.text + '"}'
         : ''
 
-    exports.channelCondition = () => {
+    exports.channelCondition = (r) => {
         var codes = [...filter_channel.selectedOptionValues]
-        // codes.push(Math.random().toString()) // randomize query with unreal store code
+        if (r) {
+            codes.push(Math.random().toString()) // randomize query with unreal store code
+        }
         return 'storeCode: {in: ' + filter.arrayToString(codes) + '}'
     }
 
