@@ -41,7 +41,7 @@
             return
         }
         var range = filter_period.selectedOptionValue
-        range = range ? range : 'week'
+        range = !(range.length > 1) ? range : 'week'
         if (range == 'date') {
             var to = moment(filter_dateTo.selectedDate)
             var from = moment(filter_dateFrom.selectedDate)
