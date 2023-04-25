@@ -18,13 +18,20 @@
         "currency": "GBP",
         "currencySign": "£",
         "timeZone": "Europe/London",
-        "colors": [
+        "colors1": [
             "#97A1D9",
             "#4A5596",
             "#6978C9",
             "#2C3365",
             "#111539"
         ],
+        "colors": [
+            "#1896c6",
+            "#EF767A",
+            "#456990",
+            "#49DCB1",
+            "#EEB868"
+        ]
         "data": {
             "payments": {
                 "adyen_cc": "Adyen cc",
