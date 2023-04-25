@@ -31,7 +31,7 @@
             "#456990",
             "#49DCB1",
             "#EEB868"
-        ]
+        ],
         "data": {
             "payments": {
                 "adyen_cc": "Adyen cc",
