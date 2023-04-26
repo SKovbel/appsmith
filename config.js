@@ -157,8 +157,8 @@
             "first_colulmn": "#f5f5f5",
             "invoice_colulmn": "#febfdb",
             "refund_colulmn": "#bffedb",
-            "positive": "#008000",
-            "negative": "#FF0000"
+            "positive": "#1896c6",
+            "negative": "#EF767A"
           },
           "sales_daily_sales_summary": {
               "columnTitleA": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
