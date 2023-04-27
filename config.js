@@ -18,27 +18,14 @@
         "currency": "GBP",
         "currencySign": "£",
         "timeZone": "Europe/London",
-        "colors": [
+        "colors1": [
             "#3367D6",
             "#4285F4",
             "#72A4F7",
             "#A0C2F9",
             "#D0E0FC",
         ],
-        "colors2": [
-            "#4FC3F7",
-            "#E1F5FF",
-            "#B3E5FC",
-            "#81D4F4",
-            "#29B6F6",
-            "#03A9F4",
-            "#039BE5",
-            "#0288D1",
-            "#0277BD",
-            "#03A9F4",
-            "#03A9F4",
-        ],
-        "colors1": [
+        "colors": [
             "#1896c6",
             "#EF767A",
             "#456990",
