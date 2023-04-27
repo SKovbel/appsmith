@@ -19,6 +19,18 @@
         "currencySign": "£",
         "timeZone": "Europe/London",
         "colors": [
+            "#E1F5FF",
+            "#B3E5FC",
+            "#81D4F4",
+            "#4FC3F7",
+            "#29B6F6",
+            "#03A9F4",
+            "#039BE5",
+            "#0288D1",
+            "#0277BD",
+            "#01579B"
+        ],
+        "colors1": [
             "#1896c6",
             "#EF767A",
             "#456990",
