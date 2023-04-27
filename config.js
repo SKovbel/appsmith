@@ -18,13 +18,6 @@
         "currency": "GBP",
         "currencySign": "£",
         "timeZone": "Europe/London",
-        "colors1": [
-            "#97A1D9",
-            "#4A5596",
-            "#6978C9",
-            "#2C3365",
-            "#111539"
-        ],
         "colors": [
             "#1896c6",
             "#EF767A",
@@ -157,7 +150,7 @@
             "first_colulmn": "#f5f5f5",
             "invoice_colulmn": "#febfdb",
             "refund_colulmn": "#bffedb",
-            "positive": "#49DCB1",
+            "positive": "#1896c6",
             "negative": "#EF767A"
           },
           "sales_daily_sales_summary": {
