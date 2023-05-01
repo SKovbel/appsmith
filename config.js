@@ -20,6 +20,7 @@
         "timeZone": "Europe/London",
         "date": {
             "date": "DD-MMM-YY",
+            "month": "MMM YY",
             "week": "#WW/YY"
         },
         "colors": [
