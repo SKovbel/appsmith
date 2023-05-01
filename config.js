@@ -18,13 +18,10 @@
         "currency": "GBP",
         "currencySign": "£",
         "timeZone": "Europe/London",
-        "colors1": [
-            "#3367D6",
-            "#4285F4",
-            "#72A4F7",
-            "#A0C2F9",
-            "#D0E0FC",
-        ],
+        "date": {
+            "date": "DD-MMM-YY",
+            "week": "#WW/YY"
+        },
         "colors": [
             "#1896c6",
             "#EF767A",
@@ -32,6 +29,17 @@
             "#49DCB1",
             "#EEB868"
         ],
+        "color": {
+            "rows": [
+                "#1896c6",
+                "#EF767A",
+                "#456990",
+                "#49DCB1",
+                "#EEB868"
+            ],
+            "positive": "#008000",
+            "negative": "#FF0000"
+        },
         "data": {
             "payments": {
                 "adyen_cc": "Adyen cc",
