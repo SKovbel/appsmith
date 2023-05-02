@@ -101,7 +101,7 @@
     }
 
     exports.colorizeCell = (val) => {
-        if (v === 0 || v === '') return '#F0F0F0'
+        if (!(val.length > 0)) return '#F0F0F0'
         return '#FFFFFF'
     }
 
