@@ -217,7 +217,7 @@
     }
 
     exports.yearsPeriod = () => {
-        var data = [{"label": "Last 12 monthes", "value": ""}]
+        var data = [{"label": "Last 12 months", "value": ""}]
         for (var year = moment(Date()).year(); year >= 2015; year--) {
             data.push({"label": "Year " + year, "value": year})
         }
