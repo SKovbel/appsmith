@@ -327,6 +327,40 @@
         },
 
         "filter": {
+            "status": [
+                {
+                    "value": "complete",
+                    "label": "Complete"
+                },
+                {
+                    "value": "canceled",
+                    "label": "Canceled"
+                },
+                {
+                    "value": "closed",
+                    "label": "Closed"
+                },
+                {
+                    "value": "new",
+                    "label": "New"
+                },
+                {
+                    "value": "holded",
+                    "label": "Holded"
+                },
+                {
+                    "value": "payment_review",
+                    "label": "Payment review"
+                },
+                {
+                    "value": "pending_payment",
+                    "label": "Pending payment"
+                },
+                {
+                    "value": "processing",
+                    "label": "Processing"
+                }
+           ],
           "payment": [
               {
                   "value": "adyen_cc",
