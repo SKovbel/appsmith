@@ -103,7 +103,7 @@
     exports.colorizeCell = (val) => {
         if (!val) return '#F0F0F0'
         if (!(val.length > 0)) return '#F0F0F0'
-        return '#FFFFFF'
+        return '#FF0000'
     }
 
     exports.cap = (str) => {
