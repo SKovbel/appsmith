@@ -66,7 +66,6 @@
         return kitroyale.config.ui.currencySign + result
     }
 
-
     var currency = function (v, maxFraction, minFraction) {
         if (v === '' || v === null || isNaN(v)) return ''
         if (v === 0 && hideZero) return ''
@@ -99,6 +98,11 @@
         return v > 0 
             ? kitroyale.config.ui.table.colors.positive 
             : kitroyale.config.ui.table.colors.negative
+    }
+
+    exports.colorizeCell = (val) => {
+        if (v === 0 || v === '') return '#F0F0F0'
+        return '#FFFFFF'
     }
 
     exports.cap = (str) => {
