@@ -19,7 +19,7 @@
         "currencySign": "£",
         "timeZone": "Europe/London",
         "date": {
-            "date": "DD-MMM-YY",
+            "date": "DD-MMM-YYYY",
             "month": "MMM YY",
             "week": "#WW/YY"
         },
