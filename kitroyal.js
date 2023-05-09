@@ -7,7 +7,8 @@
       module.exports = factory(require('./config'), require('./filter'));
   } else {
       // Browser globals (root is window)
-      root.myModule = factory(root.config, root.filter);
+      root.kitroyale = factory(root.config, root.filter);
+      root.config = root.kitroyale.config;
   }
 }(this, function (config, filter) {
   // Your module code here
