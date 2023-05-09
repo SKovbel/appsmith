@@ -1,3 +1,6 @@
+import config from "./config.js";
+import format from "./format.js";
+
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
       // AMD
@@ -7,8 +10,9 @@
       module.exports = factory(require('./config'), require('./filter'));
   } else {
       // Browser globals (root is window)
-      root.kitroyale = factory(root.config, root.filter);
-      root.config = root.kitroyale.config;
+
+      root.config = config;
+      root.format = format;
   }
 }(this, function (config, filter) {
   // Your module code here
