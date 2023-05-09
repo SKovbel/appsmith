@@ -1,41 +1,28 @@
-// File filter.js
-(function (global, factory) {
-    if (typeof define === "function" && define.amd) {
-        define(["exports"], factory)
-    } else if (typeof exports !== "undefined") {
-        factory(exports)
-    } else {
-        var mod = {exports: {}}
-        factory(mod.exports)
-        global.filter = mod.exports
-    }
-})(this, function (exports) {
-    "use strict"
+exports.filter = {
+    getPeriodAFrom: (format) => format ? moment(appsmith.store.periodFrom).format('YYYY-MM-DD') : moment(appsmith.store.periodFrom),
+    getPeriodATo: (format) => format ? moment(appsmith.store.periodTo).format('YYYY-MM-DD') : moment(appsmith.store.periodTo),
+    getPeriodBFrom: (format) => format ? moment(appsmith.store.compareFrom).format('YYYY-MM-DD') : moment(appsmith.store.compareFrom),
+    getPeriodBTo: (format) => format ? moment(appsmith.store.compareTo).format('YYYY-MM-DD') : moment(appsmith.store.compareTo),
+    getPeriodCFrom: (format) => format ? moment(appsmith.store.yearFrom).format('YYYY-MM-DD') : moment(appsmith.store.yearFrom),
+    getPeriodCTo: (format) => format ? moment(appsmith.store.yearTo).format('YYYY-MM-DD') : moment(appsmith.store.yearTo),
 
-    exports.getPeriodAFrom = (format) => format ? moment(appsmith.store.periodFrom).format('YYYY-MM-DD') : moment(appsmith.store.periodFrom)
-    exports.getPeriodATo = (format) => format ? moment(appsmith.store.periodTo).format('YYYY-MM-DD') : moment(appsmith.store.periodTo)
-    exports.getPeriodBFrom = (format) => format ? moment(appsmith.store.compareFrom).format('YYYY-MM-DD') : moment(appsmith.store.compareFrom)
-    exports.getPeriodBTo = (format) => format ? moment(appsmith.store.compareTo).format('YYYY-MM-DD') : moment(appsmith.store.compareTo)
-    exports.getPeriodCFrom = (format) => format ? moment(appsmith.store.yearFrom).format('YYYY-MM-DD') : moment(appsmith.store.yearFrom)
-    exports.getPeriodCTo = (format) => format ? moment(appsmith.store.yearTo).format('YYYY-MM-DD') : moment(appsmith.store.yearTo)
-
-    exports.getPeriodYFrom = (format) => {
+    getPeriodYFrom: (format) => {
         if (appsmith.store.compare == 'py') return filter.getPeriodAFrom(format)
         var dt = moment(appsmith.store.yearTo)
         return format ? dt.format('YYYY-MM-DD') : dt
-    }
+    },
 
-    exports.getPeriodYTo = (format) => {
+    getPeriodYTo: (format) => {
         if (appsmith.store.compare == 'py') return filter.getPeriodATo(format)
         var dt = moment(Date())
         return format ? dt.format('YYYY-MM-DD') : dt
-    }
+    },
 
-    exports.showFilters = () => {
+    showFilters: () => {
         showModal('FilterModal')
-    }
+    },
 
-    exports.confirm = () => {
+    confirm: () => {
         closeModal('FilterModal')
         if (typeof filter_period == "undefined" ) {
             return
@@ -214,53 +201,53 @@
             storeValue('year', 'py')
             storeValue('interval', 'day')
         }
-    }
+    },
 
-    exports.yearsPeriod = () => {
+    yearsPeriod: () => {
         var data = [{"label": "Last 12 months", "value": ""}]
         for (var year = moment(Date()).year(); year >= 2015; year--) {
             data.push({"label": "Year " + year, "value": year})
         }
         return data
-    }
+    },
 
-    exports.arrayToString = (values) => {
+    arrayToString: (values) => {
         return '["' + values.join('","') + '"]'
-    }
+    },
 
-    exports.skuCondition = () => filter_sku.text
+    skuCondition: () => filter_sku.text
         ? 'sku: {contains: "' + filter_sku.text + '"}'
-        : ''
+        : '',
 
-    exports.channelCondition = (r) => {
+    channelCondition: (r) => {
         var codes = [...filter_channel.selectedOptionValues]
         if (r) {
             codes.push(Math.random().toString()) // randomize query with unreal store code
         }
         return 'storeCode: {in: ' + filter.arrayToString(codes) + '}'
-    }
+    },
 
-    exports.statusCondition = () => filter_status.selectedOptionValues.length 
+    statusCondition: () => filter_status.selectedOptionValues.length 
         ? 'status: {in: '+ filter.arrayToString(filter_status.selectedOptionValues) + '}'
-        : ''
+        : '',
 
-    exports.countryCondition = () => filter_country.selectedOptionValues.length 
+    countryCondition: () => filter_country.selectedOptionValues.length 
         ? 'country: {in: '+ filter.arrayToString(filter_country.selectedOptionValues) + '}'
-        : ''
+        : '',
 
-    exports.paymentCondition = () => filter_payment.selectedOptionValues.length 
-    ? 'payment: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
-    : ''
+    paymentCondition: () => filter_payment.selectedOptionValues.length 
+        ? 'payment: {in: '+ filter.arrayToString(filter_payment.selectedOptionValues) + '}'
+        : '',
 
-    exports.sizeCondition = () => filter_size.selectedOptionValues.length 
+    sizeCondition: () => filter_size.selectedOptionValues.length 
         ? 'size: {in: '+ filter.arrayToString(filter_size.selectedOptionValues) + '}'
-        : ''
+        : '',
 
-    exports.colorCondition = () => filter_color.selectedOptionValues.length 
+    colorCondition: () => filter_color.selectedOptionValues.length 
         ? 'color: {in: '+ filter.arrayToString(filter_color.selectedOptionValues) + '}'
-        : ''
+        : '',
 
-    exports.categoryCondition = () => filter_category.selectedOptionValues.length 
+    categoryCondition: () => filter_category.selectedOptionValues.length 
         ? 'category: {in: '+ filter.arrayToString(filter_category.selectedOptionValues) + '}'
-        : ''
-})
+        : '',
+}
