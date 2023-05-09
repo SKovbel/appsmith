@@ -2,8 +2,7 @@ module.exports = {
     entry: './../index.js',
     output: {
       filename: '../../kitroyal.js',
-      libraryTarget: 'umd',
-      umdNamedDefine: true
+      libraryTarget: 'umd'
     },
     module: {
       rules: [
