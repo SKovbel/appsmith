@@ -3,7 +3,7 @@ module.exports = {
   output: {
     library: 'kitroyale',
     filename: '../../kitroyale.js',
-    libraryTarget: 'window'
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
