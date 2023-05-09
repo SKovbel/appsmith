@@ -10,15 +10,15 @@ import format from "./format.js";
       module.exports = factory(require('./config'), require('./filter'));
   } else {
       // Browser globals (root is window)
-
-      root.config = config;
-      root.format = format;
+      var data = factory(root.config, root.filter);
+      root.config = data['config]'];
+      root.format = format['format'];
   }
 }(this, function (config, filter) {
   // Your module code here
   return {
-      config: config,
-      filter: filter
+      'config': config.config,
+      'filter': filter.filter
   };
 }));
 
