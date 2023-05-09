@@ -1,6 +1,7 @@
 module.exports = {
   entry: './../index.js',
   output: {
+    name: 'Kitroyale',
     filename: '../../kitroyale.js',
     libraryTarget: 'umd'
   },
