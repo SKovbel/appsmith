@@ -1,6 +1,6 @@
-import { filter } from './bundle/filter';
-import { config } from './bundle/config';
-import { format } from './bundle/format';
-import { exportCsv } from './bundle/export-csv';
+import { filter } from './webpack/filter';
+import { config } from './webpack/config';
+import { format } from './webpack/format';
+import { exportCsv } from './webpack/export-csv';
 
 export { filter, config, format, exportCsv };

@@ -1,6 +1,7 @@
 module.exports = {
   entry: './../index.js',
   output: {
+    library: 'kitroyal',
     filename: '../../kitroyal.js',
     libraryTarget: 'window'
   },
