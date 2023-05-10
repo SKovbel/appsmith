@@ -1,5 +1,3 @@
-import { config } from './config';
-
 export const format = {
     round: (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d),
 
