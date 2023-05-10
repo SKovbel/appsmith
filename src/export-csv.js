@@ -1,4 +1,4 @@
-export const exportCsv = (fileName, tables) => {
+exports.exportCsv = (fileName, tables) => {
     var conv = function (str) {
         str = str != null ? String(str).replaceAll(',', '') : ''
         return str.replaceAll(String.fromCharCode(163), String.fromCharCode(194, 163))

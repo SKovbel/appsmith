@@ -1,4 +1,4 @@
-export const config = {
+exports.config = {
       "ui": {
         "local": "en-GB",
         "currency": "GBP",

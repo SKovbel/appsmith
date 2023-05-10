@@ -1,4 +1,4 @@
-export const format = {
+exports.format = {
     round: (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d),
 
     percent: (a, b) => (a && b) 
@@ -34,11 +34,10 @@ export const format = {
     },
 
     currency: (v, maxFraction, minFraction) => {
-        if (v === '' || v === null || isNaN(v)) return ''
-        if (v === 0 && hideZero) return ''
+        if (v === '' || v === null || isNaN(v)) return v
         var settings = {
             style: 'currency',
-            currency: 'GBP'
+            currency: config.ui.currency,
         }
         if (maxFraction > 0 || maxFraction === 0 || maxFraction === '0') {
             settings['maximumFractionDigits'] = maxFraction
@@ -46,10 +45,12 @@ export const format = {
         if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
             settings['minimumFractionDigits'] = minFraction
         }
-        const formater = new Intl.NumberFormat('en-GB', settings);
-        var result = formater.format(v)
-        result = result.replace(/[^0-9\,\.\-]/i, '').trim()
-        return '$' + result
+        const intl = new Intl.NumberFormat(config.ui.locale, settings);
+        var result = intl.format(v)
+            .replace(/\s/i, '')
+            .replace(/[^0-9\,\.\-]/i, '')
+            .trim()
+        return config.ui.currencySign + result
     },
 
     toInt: (val) => {
