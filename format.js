@@ -1,5 +1,3 @@
-var config = require('./config');
-
 exports.format = {
     round: (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d),
 
@@ -33,26 +31,6 @@ exports.format = {
             arr.push(obj[k])
         }
         return arr
-    },
-
-    currency: (v, maxFraction, minFraction) => {
-        if (v === '' || v === null || isNaN(v)) return v
-        var settings = {
-            style: 'currency',
-            currency: config.ui.currency,
-        }
-        if (maxFraction > 0 || maxFraction === 0 || maxFraction === '0') {
-            settings['maximumFractionDigits'] = maxFraction
-        }
-        if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
-            settings['minimumFractionDigits'] = minFraction
-        }
-        const intl = new Intl.NumberFormat(config.ui.locale, settings);
-        var result = intl.format(v)
-            .replace(/\s/i, '')
-            .replace(/[^0-9\,\.\-]/i, '')
-            .trim()
-        return config.ui.currencySign + result
     },
 
     currency: (v, maxFraction, minFraction) => {
