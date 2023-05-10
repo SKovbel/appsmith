@@ -1,4 +1,6 @@
-exports.format = {
+import { config } from './config';
+
+export const format = {
     round: (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d),
 
     percent: (a, b) => (a && b) 
@@ -22,7 +24,7 @@ exports.format = {
             options['style'] = "currency"
             options['currency'] = config.ui.currency
         }
-        return v.toLocaleString(config.ui.locale, options)
+        return v.toLocaleString(window.config.ui.locale, options)
     },
 
     toArray: (obj) => {

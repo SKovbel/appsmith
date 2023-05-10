@@ -1,8 +1,12 @@
 module.exports = {
-  entry: './../index.js',
+  entry: './../src/index.js',
   output: {
-    filename: '../../kitroyale.js',
+    filename: '../../dist/kitroyale.js',
     libraryTarget: 'umd'
+  },
+  stats: {
+    errorDetails: true,
+    children: true
   },
   module: {
     rules: [
