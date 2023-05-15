@@ -1,5 +1,5 @@
 exports.ui = {
-    "colors": {
+    "color": {
         "positive": "#008000",
         "negative": "#FF0000",
 
@@ -13,7 +13,7 @@ exports.ui = {
     },
 
     "menu": {
-        "colors": {
+        "color": {
             "color": '#000000',
             "active": '#000001', // word #000001 used in styles, important to have
             "topColor": '#64748b',
