@@ -1,5 +1,9 @@
 #!/bin/sh
 
+cd webpack
+npx webpack --mode production
+cd ..
+
 
 tag=`git describe --tags $(git rev-list --tags --max-count=1)`
 if [ -z "$1" ]
