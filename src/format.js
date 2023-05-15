@@ -28,7 +28,7 @@ exports.format = {
 
     // currency(12345.67, {d: 0, c: 1})
     format: (v, params = {}) => {
-        params = Object.assign({currency: false, decimal: 2}, params)
+        params = Object.assign({currency: false, decimal: 0}, params)
 
         if (v === '' || v === null || isNaN(v)) return ''
         if ( params.hideZero) return ''
@@ -63,7 +63,7 @@ exports.format = {
     },
 
     currency: (v, params = {}) => {
-        params = Object.assign({decimal: 2}, params)
+        params = Object.assign({decimal: 0}, params)
         params.currency = 2
 
         return format.format(v, params)
