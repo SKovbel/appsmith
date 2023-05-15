@@ -13,4 +13,4 @@ git add .
 git commit -m 'save'
 git push origin main
 git tag $1
-git push orign --tags
+git push origin --tags
