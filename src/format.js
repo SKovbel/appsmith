@@ -21,7 +21,7 @@ exports.format = {
         }
         if (title.includes('£') || title.includes('$')) {
             options['style'] = "currency"
-            options['currency'] = config.ui.currency
+            options['currency'] = config.locale.currency
         }
         return v.toLocaleString(window.config.locale.name, options)
     },
