@@ -58,7 +58,7 @@ exports.format = {
             .replace(/\s/i, '')
             .replace(/[^0-9\,\.\-]/i, '')
             .trim()
-        return config.currencySign + result
+        return config.locale.currencySign + result
     },
 
     toInt: (val) => {
