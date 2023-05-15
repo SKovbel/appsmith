@@ -60,7 +60,7 @@ exports.format = {
     percent: (a, b, params = {}) => {
         params.percent = true
         params.decinal = 2
-        return (a && b) ? format.format((a - b) / b, params) : null
+        return (a && b) ? format.format(100 * (a - b) / b, params) : null
     },
 
     toInt: (val) => {

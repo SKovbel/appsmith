@@ -31,8 +31,8 @@ export default {
         if (!wtd[1]['q']) return
         var color1 = wtd[1]['q'] > wtd[2]['q'] ? ui.color.positive : ui.color.negative
         var color2 = wtd[1]['q'] > wtd[3]['q'] ? ui.color.positive : ui.color.negative
-        return (wtd[2]['q'] ? `<span style='display: inline; color: ${color1}'>${format.percent(wtd[1]['q'], wtd[2]['q'])}</span> <small>vs</small> pw\n` : '') + 
-               (wtd[3]['q'] ? `<span style='display: inline; color: ${color2}'>${format.percent(wtd[1]['q'], wtd[3]['q'])}</span> <small>vs</small> py` : '')
+        return (wtd[2]['q'] ? `<span style='display: inline; color: ${color1}'>${format.percent(wtd[1]['q'], wtd[2]['q'], {})}</span> <small>vs</small> pw\n` : '') + 
+               (wtd[3]['q'] ? `<span style='display: inline; color: ${color2}'>${format.percent(wtd[1]['q'], wtd[3]['q'], {})}</span> <small>vs</small> py` : '')
     },
 
     blockGrossRevenueVar:() => {
