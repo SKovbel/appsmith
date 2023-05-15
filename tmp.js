@@ -14,7 +14,7 @@ export default {
         data = cube.data.data.cube.reduce((c, v) => {
             v = v.allSales
             if (!switcher.checkStore(v.storeCode)) return c
-					  var d = switch_datetype.isSwitchedOn ? v.created.day : v.ordered.day
+            var d = switch_datetype.isSwitchedOn ? v.created.day : v.ordered.day
             var g = reports.getWeekGroup(d)
             if (g != 1 && g != 2 && g != 3) return c
             const idx = moment(d).day()
