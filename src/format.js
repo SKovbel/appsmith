@@ -6,7 +6,7 @@ exports.format = {
         : null,
 
     // @depricated
-    format: (title, v, hideZero) => {
+    formatOld: (title, v, hideZero) => {
         if (v === '' || v === null || isNaN(v)) return ''
         if (v === 0 && hideZero) return ''
         var options = {minimumFractionDigits: 0, maximumFractionDigits: 0}
@@ -27,31 +27,20 @@ exports.format = {
     },
 
     // currency(12345.67, {d: 0, c: 1})
-    numberFormat: (v, params = {}) => {
+    format: (v, params = {currency: false, decimal: 2}) => {
         if (v === '' || v === null || isNaN(v)) return ''
-        if (v === 0 && params.hideZero) return ''
-        if (params.currency) {
-            return this.currency(v, params)
-        }
+        if ( params.hideZero) return ''
+
+        var settings = {}
+        settings.style = 'currency',
+        settings.currency = config.locale.currency
+
         if (params.decimal > 0) {
-            options['minimumFractionDigits'] = params.decimal
-            options['maximumFractionDigits'] = params.decimal
+            settings.minimumFractionDigits = params.decimal
+            settings.maximumFractionDigits = params.decimal
             v = Math.round(100 * v) / 100
         } else {
             v = Math.round(v)
-        }
-        return v.toLocaleString(window.config.locale.name, options)
-    },
-
-    // currency(12345.67, {d: 0})
-    currency: (v, params = {}) => {
-        if (v === '' || v === null || isNaN(v)) return v
-
-        var settings = {
-            style: 'currency',
-            currency: config.locale.currency,
-            maximumFractionDigits: params.d || params.decimal || 2,
-            minimumFractionDigits: params.d || params.decimal || 2,
         }
 
         const intl = new Intl.NumberFormat(window.config.locale.name, settings);
@@ -59,7 +48,21 @@ exports.format = {
             .replace(/\s/i, '')
             .replace(/[^0-9\,\.\-]/i, '')
             .trim()
-        return config.locale.currencySign + result
+
+        if (params.currency) {
+            result = config.locale.currencySign + result
+        }
+
+        if (params.percent) {
+            result = result + '%'
+        }
+
+        return result
+    },
+
+    currency: (v, params = {decimal: 2}) => {
+        params.currency = 2
+        return this.format(v, params)
     },
 
     toInt: (val) => {
