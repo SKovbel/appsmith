@@ -49,9 +49,9 @@ exports.format = {
 
         var settings = {
             style: 'currency',
+            currency: config.locale.currency,
             maximumFractionDigits: params.d || params.decimal || 2,
             minimumFractionDigits: params.d || params.decimal || 2,
-            currency: config.currency,
         }
 
         const intl = new Intl.NumberFormat(window.config.locale.name, settings);
