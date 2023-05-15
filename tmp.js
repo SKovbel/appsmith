@@ -161,33 +161,33 @@ export default {
                 }],
                 "dataset": [
                     {
-                        "color": "${config.ui.color.set[0]}",
+                        "color": "${config.ui.colors.set[0]}",
                         "renderas": "",
-                        "anchorBgColor": "${config.ui.color.set[0]}",
+                        "anchorBgColor": "${config.ui.colors.set[0]}",
                         "seriesname": "${reports.getDateA().format(config.format.week)}",
                         "data": ${chartDays.getData(1, {zeroToNull: true})}
                     },
                     {
                         "renderas": "line",
-                        "anchorBgColor": "${config.ui.color.set[1]}",
-                        "color": "${config.ui.color.set[1]}",
+                        "anchorBgColor": "${config.ui.colors.set[1]}",
+                        "color": "${config.ui.colors.set[1]}",
                         "seriesname": "${reports.getDateB().format(config.format.week)}",
                         "data": ${chartDays.getData(2, {nullToZero: true})},
-                        "legendIconBgColor": "${config.ui.colors[1]}"
+                        "legendIconBgColor": "${config.ui.colors.set[1]}"
                     },
                     {
                         "renderas": "line",
                         "visible": "0",
-                        "anchorBgColor": "${config.ui.color.rows[4]}",
-                        "color": "${config.ui.color.set[4]}",
+                        "anchorBgColor": "${config.ui.colors.set[4]}",
+                        "color": "${config.ui.colors.set[4]}",
                         "seriesname": "${reports.getDateC().format(config.format.week)}",
                         "data": ${chartDays.getData(3, {nullToZero: true})},
-                        "legendIconBgColor": "${config.ui.color.set[4]}"
+                        "legendIconBgColor": "${config.ui.colors.set[4]}"
                     }
                     ${switch_cumulative.isSwitchedOn == false ||1? `` : `
                     ,{
                       "color": "${config.ui.color.set[0]}",
-                      "anchorBgColor": "${config.ui.color.set[0]}",
+                      "anchorBgColor": "${config.ui.colors.set[0]}",
                       "seriesname": "",
                         "anchorRadius": "1",
                         "renderas": "line",
@@ -205,7 +205,7 @@ export default {
                               "startvalue": ${chartDays.getSum(2) / 7 },
                               "displayValue":" ",
                               "color": "#ec4899",
-                              "color": "${config.ui.color.rows[1]}",
+                              "color": "${config.ui.colors.set[1]}",
                               "thickness": "1",
                               "dashed": "1",
                               "showBelow": "1",
@@ -215,7 +215,7 @@ export default {
                           {
                               "startvalue": ${chartDays.getSum(1) / (1+chartDays.getDaysCount(reports.getDateA()))},
                               "displayValue":" ",
-                              "color": "${config.ui.color.rows[0]}",
+                              "color": "${config.ui.colors.set[0]}",
                               "thickness": "1",
                               "dashed": "1",
                               "valueOnRight": "1",
