@@ -1,10 +1,6 @@
 exports.format = {
     round: (n, d) => Number(Math.round(n + 'e+' + d)  + 'e-' + d),
 
-    percent: (a, b) => (a && b) 
-        ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(config.ui.locale)) + '%' 
-        : null,
-
     // @depricated
     formatOld: (title, v, hideZero) => {
         if (v === '' || v === null || isNaN(v)) return ''
@@ -57,10 +53,14 @@ exports.format = {
     },
 
     currency: (v, params = {}) => {
-        params = Object.assign({decimal: 0}, params)
         params.currency = 2
-
         return format.format(v, params)
+    },
+
+    percent: (a, b, params = {}) => {
+        params.percent = true
+        params.decinal = 2
+        return (a && b) ? format.format((a - b) / b, params) : null
     },
 
     toInt: (val) => {
