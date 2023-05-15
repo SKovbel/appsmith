@@ -40,9 +40,9 @@ exports.format = {
         if (params.decimal > 0) {
             settings.minimumFractionDigits = params.decimal
             settings.maximumFractionDigits = params.decimal
-            v = Math.round(100 * v) / 100
-        } else {
-            v = Math.round(v)
+            //v = Math.round(100 * v) / 100
+        //} else {
+            //v = Math.round(v)
         }
 
         const intl = new Intl.NumberFormat(window.config.locale.name, settings);
