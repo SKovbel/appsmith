@@ -19,5 +19,6 @@ git push origin main
 git tag $1
 git push origin --tags
 
-
+echo "\n"
 echo https://cdn.jsdelivr.net/gh/SKovbel/test@$1/dist/kitroyale.js
+echo "\n"
