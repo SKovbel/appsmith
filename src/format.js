@@ -42,24 +42,23 @@ exports.format = {
         return v.toLocaleString(window.config.locale.name, options)
     },
 
-    currency: (v, maxFraction, minFraction) => {
+    // currency(12345.67, {d: 0})
+    currency: (v, params = {}) => {
         if (v === '' || v === null || isNaN(v)) return v
+
         var settings = {
             style: 'currency',
-            currency: config.ui.currency,
+            maximumFractionDigits: params.d || params.decimal || 2,
+            minimumFractionDigits: params.d || params.decimal || 2,
+            currency: config.currency,
         }
-        if (maxFraction > 0 || maxFraction === 0 || maxFraction === '0') {
-            settings['maximumFractionDigits'] = maxFraction
-        }
-        if (minFraction > 0 || minFraction === 0 || minFraction === '0') {
-            settings['minimumFractionDigits'] = minFraction
-        }
+
         const intl = new Intl.NumberFormat(config.ui.locale, settings);
         var result = intl.format(v)
             .replace(/\s/i, '')
             .replace(/[^0-9\,\.\-]/i, '')
             .trim()
-        return config.ui.currencySign + result
+        return config.currencySign + result
     },
 
     toInt: (val) => {
