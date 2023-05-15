@@ -78,7 +78,7 @@ export default {
                 ? reports.getDateB().startOf('week').add(i, 'days')
                 : reports.getDateC().startOf('week').add(i, 'days');
             res[i]['toolText'] = 
-                `${day.format('dddd ' + config.ui.date.date)}: ` +
+                `${day.format('dddd ' + config.format.date)}: ` +
                 (res[i] && res[i]['value'] ? this.format(res[i]['value']) : 'N/A')
         }
         return  JSON.stringify(res)
