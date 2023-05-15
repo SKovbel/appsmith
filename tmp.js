@@ -1,112 +1,151 @@
 export default {
     data: null,
-
-    getlabel:() => {
-        var res = cubeYY.data.data.cube.reduce((c, v) => {
-            v = v.allSales
-	          var d = switch_datetype.isSwitchedOn ? v.created.year : v.ordered.year
-            const y = moment(d).format('YYYY')
-            c[y] = {
-                "sort": y,
-                "label": moment(d).format('YYYY')
-            }
-            return c
-        }, {})
-        res = format.toArray(res)
-        return JSON.stringify(res.sort((a, b) => a.sort - b.sort))
-    },
+    labels: null,
 
     init: () => {
-        var data = {"uk": {}, "us": {}, "eu": {}, "sq": {}}
-        var keys = Object.keys(data)
-        this.data = cubeYY.data.data.cube.reduce((c, v) => {
+        var data = {1:{}, 2:{}, 3:{}}
+  
+        for (var i = 0; i < 7; i++) {
+            data[1][i] = {'sort': i, 'value': 0/*, 'toolText': 'dddd'*/}
+            data[2][i] = {'sort': i, 'value': 0}
+            data[3][i] = {'sort': i, 'value': 0}
+        }
+  
+        data = cube.data.data.cube.reduce((c, v) => {
             v = v.allSales
-            var d = switch_datetype.isSwitchedOn ? v.created.year : v.ordered.year
             if (!switcher.checkStore(v.storeCode)) return c
-            const storeCode = v.storeCode
-            const y = moment(d).format('YYYY')
-            for (var sc of keys) {
-                if (!(y in c[sc])) {
-                    c[sc][y] = {
-                        "sort": y,
-                        "value": 0
-                    }
-                }
-            }
-            c[storeCode][y]["value"] += switcher.getValue(v)
-            c[storeCode][y]["toolText"] = `<b>$seriesName</b>: ${this.format(c[storeCode][y]["value"])}`
+					  var d = switch_datetype.isSwitchedOn ? v.created.day : v.ordered.day
+            var g = reports.getWeekGroup(d)
+            if (g != 1 && g != 2 && g != 3) return c
+            const idx = moment(d).day()
+            const val = switcher.getValue(v);
+            c[g][idx]['value'] = val + (c[g][idx]['value'] ? c[g][idx]['value'] : 0)
             return c
         }, data)
-    },
+  
+        this.data = {}
+        for (var g = 1; g <= 3; g++) {
+            var skip = true
+            for (i = 6; i >= 0; i--) {
+                if (data[g][i]['value'] !== null) skip = false
+                if (data[g][i]['value'] === null && skip) data[g][i]['value'] = null
 
-    format: (value) => {
-        if (switcher.getSign()) return format.currency(value, 2)
-        return format.format(' ', value)
+            }
+            this.data[g] = format.toArray(data[g]).sort((a, b) => a.sort - b.sort)
+        }
     },
-
-    getData:(what) => {
-        var res = this.data[what]
-        res = format.toArray(res).sort((a, b) => a.sort - b.sor)
+    
+    getLabels:() => {
+        var labels = reports.days.map((v) => {return {'label': v}})
+        return JSON.stringify(labels)
+    },
+    
+    getData: (grp, settings) => {
+        if (!this.data[grp]) return
+        settings = Object.assign({zeroToNull: false, nullToZero: false, ignoreValues: false}, settings)
+        var res = JSON.parse(JSON.stringify(this.data[grp]))
+        for (var i = 6; i >=0; i--) {
+            if (settings.zeroToNull && res[i]['value'] === 0) {
+                res[i]['value'] = null
+            }
+            if (settings.nullToZero && res[i]['value'] === null) {
+                res[i]['value'] = 0
+            }
+        }
         if (switch_cumulative.isSwitchedOn) {
-            for (var i = res.length - 1; i > 0; i--) {
+            for ( i = 6; i >0; i--) {
+                const ignoreValues = res[i]['value'] && settings.ignoreValues
                 for (var j = 0; j < i; j++) {
-                    res[i]["value"] += res[j]["value"] ? res[j]["value"] : 0
+                    if (res[i]['value'] !== null) {
+                        res[i]['value'] += res[j] ? res[j]['value'] : 0
+                    }
+                }
+                if (ignoreValues) {
+                    res[i]['value'] = null
                 }
             }
         }
-        return JSON.stringify(res)
-    },
+        for ( i = 0; i < 7; i++) {
+            if (grp == 1) {
+                const day = reports.getDateA().startOf('week').add(i, 'days');
+                const title = format.cap(switcher.getEntityTitle()) + ' ' + switcher.getTypeTitle();
+                res[i]['toolText'] = 
+                    `<b>${title}</b><br><br>${day.format('dddd ' + config.format.date)}: ` +
+                    (res[i] && res[i]['value'] ? this.format(res[i]['value']) : 'N/A')
+                continue
+            }
+            const day = grp == 2
+                ? reports.getDateB().startOf('week').add(i, 'days')
+                : reports.getDateC().startOf('week').add(i, 'days');
+            res[i]['toolText'] = 
+                `${day.format('dddd ' + config.format.date)}: ` +
+                (res[i] && res[i]['value'] ? this.format(res[i]['value']) : 'N/A')
+        }
+        return  JSON.stringify(res)
+    },	
 
+    format: (value) => {
+        if (switcher.getSign()) return format.currency(value, {decimal: 2})
+        return format.format(value, {decimal: 0})
+    },
+  
+    getSum: (grp) => {
+        const values = this.data[grp]
+        if (values) {
+            return values.reduce((x, v) => x  + v['value'], 0)
+        }
+        return 0
+    },
+  
+    getDaysCount: (date) => {
+        if (date < moment(Date()).startOf('week')) return 7
+        return date.days()
+    },
+  
     getChart: () => {
         this.init()
         return `
         {
-            "type": "stackedcolumn2d",
+            "type": "mscombi2d",
             "dataSource": {
                 "chart": {
-                    "theme": "fusion",
                     "drawCustomLegendIcon": "1",
-                    "alignCaptionWithCanvas": 1,
                     "showZeroPlaneValue":"0",
+                    "theme": "fusion",
+                    "anchorRadius": "2",
+                    "lineThickness": 2,
+                    "alignCaptionWithCanvas": 1,
                     "captionAlignment": "center",
                     "captionPadding": "20",
                     "captionFontBold": "0",
                     "captionFontColor": "#231F20",
-                    "numberprefix": "${switcher.getSign()}",
                     "legendIconSides": "4",
                     "legendIconBgAlpha": "100",
                     "legendIconAlpha": "100",
-                    "legendPosition": "bottom",
-                    "drawcrossline": "1",
-                    "plotSpacePercent":40,
-                    "showLegend": 0,
                     "canvasPadding": "0",
-                    "areaOverColumns": "0",
-                    "chartTopMargin": "0",
+                    "chartLeftMargin": "20",
+                    "chartTopMargin": "10",
                     "chartRightMargin": "0",
-                    "chartBottomMargin": "40",
-                    "chartLeftMargin": 0,
+                    "chartBottomMargin": "30",
                     "labelFontColor": "#716e6e",
                     "xAxisNameFontColor": "#716e6e",
                     "yAxisValueFontColor": "#716e6e",
-                    "valueFontColor": "#716e6e",
-                    "showYAxisValues": 0,
-                    "showsum": "1",
                     "yAxisNameFontColor": "#716e6e",
                     "renderAt": "chartContainer",
-                    "width": "100%",
-                    "decimals": "0",
-                    "showValues": "0",
-                    "rotateValues": "0",
-                    "placeValuesInside": "0",
-                    "subcaption": "Annualy",
-                    "yAxisName": "",
+                    "plotSpacePercent":60,
+                    "decimals": "1",
+                    "valueFontColor" :"#808080",
+                    "rotateValues": "1",
+                    "placeValuesInside": "1",
+                    "subcaption": "Daily",
                     "showLegend": 1,
                     "legendPosition": "absolute",
-                    "legendXPosition": 25,
+                    "legendXPosition": 75,
+                    "legendNumRows" : 1,
+                    "axisLineAlpha": "10",
+                    "base": "10",
                     "legendYPosition": 500,
-                    "legendNumRows": 1,
-                    "legendWidth": "810",
+                    "numberprefix": "${switcher.getSign()}",
                     "baseFont": "Inter",
                     "baseFontSize": "12",
                     "captionFontSize": "20",
@@ -116,44 +155,77 @@ export default {
                     "yAxisValueFontSize": "11",
                     "xAxisNameFontSize": "11"
                 },
+          
                 "categories": [{
-                    "category": ${chartYears.getlabel()}
+                    "category": ${chartDays.getLabels()}
                 }],
                 "dataset": [
                     {
                         "color": "${ui.color.set[0]}",
+                        "renderas": "",
                         "anchorBgColor": "${ui.color.set[0]}",
-                        "visible": 1,
-                        "seriesname": "UK",
-                        "plottooltext": "$seriesName: $dataValue",
-                        "data": ${chartYears.getData("uk")}
-                    }, 
+                        "seriesname": "${reports.getDateA().format(config.format.week)}",
+                        "data": ${chartDays.getData(1, {zeroToNull: true})}
+                    },
                     {
-                        "color": "${ui.color.set[4]}",
-                        "visible": 1,
-                        "anchorBgColor": "${ui.color.set[4]}",
-                        "seriesname": "US",
-                        "plottooltext": "$seriesName: $dataValue",
-                        "data": ${chartYears.getData("us")}
-                    }, 
+                        "renderas": "line",
+                        "anchorBgColor": "${ui.color.set[1]}",
+                        "color": "${ui.color.set[1]}",
+                        "seriesname": "${reports.getDateB().format(config.format.week)}",
+                        "data": ${chartDays.getData(2, {nullToZero: true})},
+                        "legendIconBgColor": "${ui.color.set[1]}"
+                    },
                     {
-                        "color": "${ui.color.set[3]}",
-                        "visible": 1,
-                        "anchorBgColor": "${ui.color.set[3]}",
-                        "seriesname": "EU",
-                        "plottooltext": "$seriesName: $dataValue",
-                        "data": ${chartYears.getData("eu")}
-                    }, 
-                    {
-                        "color": "${ui.color.set[2]}",
-                        "visible": 1,
+                        "renderas": "line",
+                        "visible": "0",
                         "anchorBgColor": "${ui.color.set[2]}",
-                        "seriesname": "Retail",
-                        "plottooltext": "$seriesName: $dataValue",
-                        "data": ${chartYears.getData("sq")}
+                        "color": "${ui.color.set[2]}",
+                        "seriesname": "${reports.getDateC().format(config.format.week)}",
+                        "data": ${chartDays.getData(3, {nullToZero: true})},
+                        "legendIconBgColor": "${ui.color.set[2]}"
                     }
+                    ${switch_cumulative.isSwitchedOn == false ||1? `` : `
+                    ,{
+                      "color": "${ui.color.set[0]}",
+                      "anchorBgColor": "${ui.color.set[0]}",
+                      "seriesname": "",
+                        "anchorRadius": "1",
+                        "renderas": "line",
+                        "dashed":1,
+                        "lineThickness": 1,
+                        "showToolTip": 0,
+                        "plottooltext": " ",
+                        "data": ${chartDays.getData(1, {nullToZero: true})}
+                    }`}
                 ]
+                ${switch_cumulative.isSwitchedOn ? `` : `
+                    , "trendline1s": [{
+                      "line": [
+                          {
+                              "startvalue": ${chartDays.getSum(2) / 7 },
+                              "displayValue":" ",
+                              "color": "#ec4899",
+                              "color": "${ui.color.set[1]}",
+                              "thickness": "1",
+                              "dashed": "1",
+                              "showBelow": "1",
+                              "valueOnRight": "1",
+                              "tooltext": "${"Previous year avg. value: "+Math.round(chartDays.getSum(2) / 7 / 10) / 100 }"
+                          },
+                          {
+                              "startvalue": ${chartDays.getSum(1) / (1+chartDays.getDaysCount(reports.getDateA()))},
+                              "displayValue":" ",
+                              "color": "${ui.color.set[0]}",
+                              "thickness": "1",
+                              "dashed": "1",
+                              "valueOnRight": "1",
+                              "tooltext": "${"Current week avg. value:. " + Math.round(chartDays.getSum(1) / (1+chartDays.getDaysCount(reports.getDateA())) / 10) / 100 }"
+                          }
+                      ]
+                    }]`
+                }                  
             }
         }`
     }
-}
+  }
+  

@@ -62,7 +62,7 @@ exports.format = {
 
     currency: (v, params = {decimal: 2}) => {
         params.currency = 2
-        return this.format(v, params)
+        return format.format(v, params)
     },
 
     toInt: (val) => {
