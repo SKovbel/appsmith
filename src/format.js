@@ -26,6 +26,7 @@ exports.format = {
         return v.toLocaleString(window.config.locale.name, options)
     },
 
+    // currency(12345.67, {d: 0, c: 1})
     numberFormat: (v, params = {}) => {
         if (v === '' || v === null || isNaN(v)) return ''
         if (v === 0 && params.hideZero) return ''
@@ -53,7 +54,7 @@ exports.format = {
             currency: config.currency,
         }
 
-        const intl = new Intl.NumberFormat(config.ui.locale, settings);
+        const intl = new Intl.NumberFormat(window.config.locale.name, settings);
         var result = intl.format(v)
             .replace(/\s/i, '')
             .replace(/[^0-9\,\.\-]/i, '')
