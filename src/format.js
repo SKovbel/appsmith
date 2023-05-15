@@ -36,14 +36,8 @@ exports.format = {
         var settings = {}
         settings.style = 'currency',
         settings.currency = config.locale.currency
-
-        if (params.decimal > 0) {
-            settings.minimumFractionDigits = params.decimal
-            settings.maximumFractionDigits = params.decimal
-            //v = Math.round(100 * v) / 100
-        //} else {
-            //v = Math.round(v)
-        }
+        settings.minimumFractionDigits = params.decimal > 0 ? params.decimal : 0
+        settings.maximumFractionDigits = params.decimal > 0 ? params.decimal : 0
 
         const intl = new Intl.NumberFormat(window.config.locale.name, settings);
         var result = intl.format(v)
