@@ -5,6 +5,7 @@ exports.format = {
         ? (Math.round(Number(10000 * (a - b) / b) / 100).toLocaleString(config.ui.locale)) + '%' 
         : null,
 
+    // @depricated
     format: (title, v, hideZero) => {
         if (v === '' || v === null || isNaN(v)) return ''
         if (v === 0 && hideZero) return ''
@@ -22,15 +23,23 @@ exports.format = {
             options['style'] = "currency"
             options['currency'] = config.ui.currency
         }
-        return v.toLocaleString(window.config.ui.locale, options)
+        return v.toLocaleString(window.config.locale.name, options)
     },
 
-    toArray: (obj) => {
-        var arr = []
-        for(let k of Object.keys(obj).sort()) {
-            arr.push(obj[k])
+    numberFormat: (v, params = {}) => {
+        if (v === '' || v === null || isNaN(v)) return ''
+        if (v === 0 && params.hideZero) return ''
+        if (params.currency) {
+            return this.currency(v, params)
         }
-        return arr
+        if (params.decimal > 0) {
+            options['minimumFractionDigits'] = params.decimal
+            options['maximumFractionDigits'] = params.decimal
+            v = Math.round(100 * v) / 100
+        } else {
+            v = Math.round(v)
+        }
+        return v.toLocaleString(window.config.locale.name, options)
     },
 
     currency: (v, maxFraction, minFraction) => {
@@ -59,6 +68,18 @@ exports.format = {
             : val
     },
 
+    toArray: (obj) => {
+        var arr = []
+        for(let k of Object.keys(obj).sort()) {
+            arr.push(obj[k])
+        }
+        return arr
+    },
+
+    cap: (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    },
+
     colorizeRow: (val, negativeOnly) => {
         const v = format.toInt(val)
         if (v == 0) return ''
@@ -72,9 +93,5 @@ exports.format = {
         if (!val) return '#F0F0F0'
         if (!(val.length > 0)) return '#F0F0F0'
         return '#FFFFFF'
-    },
-
-    cap: (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1)
     }
 }
