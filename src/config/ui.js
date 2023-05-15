@@ -17,7 +17,7 @@ exports.ui = {
             "color": '#000000',
             "active": '#000001', // word #000001 used in styles, important to have
             "topColor": '#64748b',
-            "topActive": '#000000',
+            "topActive": '#FFFFFF',
         },
 
         "sales": {
@@ -66,7 +66,9 @@ exports.ui = {
             ]
         }
     },
+    "pages": {
 
+    },
     "table": {
         "sales_daily_sales_summary": {
             "columnTitleA": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},

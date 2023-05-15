@@ -6,5 +6,6 @@ import { filter } from './filter';
 import { format } from './format';
 import { exportCsv } from './export-csv';
 
+import { menu } from './ui/menu';
 
-export { config, dict, ui, filter, format, exportCsv };
+export { config, dict, ui, filter, format, exportCsv, menu };
