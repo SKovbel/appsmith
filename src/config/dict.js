@@ -51,7 +51,7 @@ exports.dict = {
             {"value": "uk", "label": "UK"},
             {"value": "eu", "label": "EU"},
             {"value": "us", "label": "US"},
-            {"value": "aq", "label": "Offline retail"}
+            {"value": "sq", "label": "Offline retail"}
         ]
     },
 
