@@ -1,6 +1,6 @@
 import { config } from './config/config';
+import { ui } from './config/ui/';
 import { dict } from './config/dict';
-import { uiConfig } from './config/ui/';
 
 import { filter } from './filter';
 import { format } from './format';
@@ -10,7 +10,7 @@ import { uiMenu } from './ui/menu';
 import { uiStyle } from './ui/style';
 
 export { 
-    config, dict,
+    config, ui, dict,
     filter, format, exportCsv, 
-    uiConfig, uiMenu, uiStyle
+    uiMenu, uiStyle
 };
