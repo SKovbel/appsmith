@@ -12,16 +12,16 @@ exports.style = {
         ],
     },
 
-    valueColor: (val, negativeOnly) => {
-        const v = format.toInt(val)
+    valueColor: (value, negativeOnly) => {
+        const v = format.toInt(value)
         if (v == 0) return ''
         if (v > 0 && negativeOnly) return ''
         return v > 0 ? style.color.positive  : style.color.negative
     },
 
-    valueBackground: (val) => {
-        if (!val) return '#F0F0F0'
-        if (!(val.length > 0)) return '#F0F0F0'
+    valueBackground: (value) => {
+        if (!value) return '#F0F0F0'
+        if (!(value.length > 0)) return '#F0F0F0'
         return '#FFFFFF'
     }
 }
