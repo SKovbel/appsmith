@@ -1,4 +1,4 @@
-exports.menu = {
+exports.uiMenu = {
     isActive: (submenus) => {
         if (!submenus || submenus.length == 0) return false
         return submenus.reduce((x, item) => {

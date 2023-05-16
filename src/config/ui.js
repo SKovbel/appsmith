@@ -66,9 +66,11 @@ exports.ui = {
             ]
         }
     },
+
     "pages": {
 
     },
+
     "table": {
         "sales_daily_sales_summary": {
             "columnTitleA": {"title": () => "Current week #" + reports.getDateA().format("WW YYYY")},
