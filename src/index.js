@@ -1,5 +1,5 @@
 import { config } from './config/config';
-import { ui } from './config/ui/';
+import { ui } from './config/ui.js';
 import { dict } from './config/dict';
 
 import { filter } from './filter';
