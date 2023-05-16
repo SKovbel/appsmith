@@ -6,6 +6,16 @@ exports.dict = {
         "sq": "Offline retail"
     },
 
+    "days": [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ],
+
     "payments": {
         "adyen_cc": "Adyen cc",
         "adyen_hpp": "Adyen hpp",
