@@ -44,5 +44,22 @@ exports.dict = {
         "finance_shipping": "Shipping",
         "finance_annual-summary": "Annual summary",
         "finance_coupon": "Coupon details"
+    },
+
+    getChannelsAll: () => {
+        return [
+            {"value": "uk", "label": "UK"},
+            {"value": "eu", "label": "EU"},
+            {"value": "us", "label": "US"},
+            {"value": "aq", "label": "Offline retail"}
+        ]
+    },
+
+    getChannelsOnline: () => {
+        return [
+            {"value": "uk", "label": "UK"},
+            {"value": "eu", "label": "EU"},
+            {"value": "us", "label": "US"}
+        ]
     }
 };
