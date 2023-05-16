@@ -2,15 +2,15 @@ import { config } from './config/config';
 import { ui } from './config/ui.js';
 import { dict } from './config/dict';
 
-import { filter } from './filter';
 import { format } from './format';
 import { exportCsv } from './export-csv';
 
-import { uiMenu } from './ui/menu';
-import { uiStyle } from './ui/style';
+import { filter } from './ui/filter';
+import { menu } from './ui/menu';
+import { style } from './ui/style';
 
 export { 
     config, ui, dict,
     filter, format, exportCsv, 
-    uiMenu, uiStyle
+    menu, style
 };
