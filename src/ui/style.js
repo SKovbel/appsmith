@@ -16,7 +16,7 @@ exports.style = {
         const v = format.toInt(val)
         if (v == 0) return ''
         if (v > 0 && negativeOnly) return ''
-        return v > 0 ? ui.colors.positive  : ui.colors.negative
+        return v > 0 ? style.color.positive  : style.color.negative
     },
 
     valueBackground: (val) => {
