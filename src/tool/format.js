@@ -5,7 +5,7 @@ exports.format = {
         params = Object.assign({currency: false, decimal: 0}, params)
 
         if (v === '' || v === null || isNaN(v)) return ''
-        if (params.hideZero) return ''
+        if (params.abs) v = Math.abs(v)
 
         var settings = {}
         settings.style = 'currency',
