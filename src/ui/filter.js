@@ -1,4 +1,49 @@
 exports.filter = {
+    status: [
+        {value: "complete", label: "Complete"},
+        {value: "canceled", label: "Canceled"},
+        {value: "closed", label: "Closed"},
+        {value: "new", label: "New"},
+        {value: "holded", label: "Holded"},
+        {value: "payment_review", label: "Payment review"},
+        {value: "pending_payment", label: "Pending payment"},
+        {value: "processing", label: "Processing"}
+    ],
+
+    payment: [
+        {value: "adyen_cc", label: "Adyen cc"},
+        {value: "adyen_hpp", label: "Adyen hpp"},
+        {value: "paypal_express", label: "Paypal express"},
+        {value: "globale", label: "Global-e"},
+        {value: "klarna_kp", label: "Klarna pk"},
+        {value: "free",label: "Free"},
+        {value: "checkmo",label: "Checkmo"},
+        {value: "canceled", label: "Canceled"},
+        {value: "closed", label: "Closed"},
+        {value: "complete", label: "Complete"},
+        {value: "holded", label: "Holded"},
+        {value: "new", label: "New"},
+        {value: "payment_review", label: "Payment Review"},
+        {value: "pending_payment", label: "Pending Payment"},
+        {value: "processing", label: "Processing"}
+    ],
+
+    period:[
+        {label: "This week", value: "week"},
+        {label: "Date range", value: "date"},
+        {label: "This month", value: "month"},
+        {label: "This year", value: "year"},
+        {label: "This fiscal year", value: "fyear"},
+        {label: "Last week", value: "lweek"},
+        {label: "Last month", value: "lmonth"},
+        {label: "Last year", value: "lyear"},
+        {label: "Last fiscal year", value: "lfyear"},
+        {label: "Last 7 days", value: "7d"},
+        {label: "Last 30 days", value: "30d"},
+        {label: "Last 90 days", value: "90d"},
+        {label: "Last 12 months", value: "12m"}
+    ],
+
     getPeriodAFrom: (format) => format ? moment(appsmith.store.periodFrom).format('YYYY-MM-DD') : moment(appsmith.store.periodFrom),
     getPeriodATo: (format) => format ? moment(appsmith.store.periodTo).format('YYYY-MM-DD') : moment(appsmith.store.periodTo),
     getPeriodBFrom: (format) => format ? moment(appsmith.store.compareFrom).format('YYYY-MM-DD') : moment(appsmith.store.compareFrom),
@@ -204,9 +249,9 @@ exports.filter = {
     },
 
     yearsPeriod: () => {
-        var data = [{"label": "Last 12 months", "value": ""}]
+        var data = [{label: "Last 12 months", value: ""}]
         for (var year = moment(Date()).year(); year >= 2015; year--) {
-            data.push({"label": "Year " + year, "value": year})
+            data.push({label: "Year " + year, value: year})
         }
         return data
     },
