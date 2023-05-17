@@ -1,12 +1,12 @@
 exports.dict = {
-    "channels": {
-        "uk": "UK",
-        "eu": "EU",
-        "us": "US",
-        "sq": "Offline retail"
+    channels: {
+        uk: "UK",
+        eu: "EU",
+        us: "US",
+        sq: "Offline retail"
     },
 
-    "days": [
+    days: [
         'Sunday',
         'Monday',
         'Tuesday',
@@ -16,20 +16,20 @@ exports.dict = {
         'Saturday'
     ],
 
-    "payments": {
-        "adyen_cc": "Adyen cc",
-        "adyen_hpp": "Adyen hpp",
-        "paypal_express": "Paypal",
-        "globale": "Global-e",
-        "klarna_kp": "Klarna",
-        "free": "Free",
-        "checkmo": "Check mo",
-        "stripe": "Stripe",
-        "braintree_paypal": "Paypal braintree"
+    payments: {
+        adyen_cc: "Adyen cc",
+        adyen_hpp: "Adyen hpp",
+        paypal_express: "Paypal",
+        globale: "Global-e",
+        klarna_kp: "Klarna",
+        free: "Free",
+        checkmo: "Check mo",
+        stripe: "Stripe",
+        braintree_paypal: "Paypal braintree"
     },
 
 
-    "page": {
+    page: {
         "sales_sale-overview": "Sales overview",
         "sales_daily-sales-summary": "Daily sales summary",
         "sales_ecommerce-weekly": "Ecommerce weekly",
@@ -48,18 +48,57 @@ exports.dict = {
 
     getChannelsAll: () => {
         return [
-            {"value": "uk", "label": "UK"},
-            {"value": "eu", "label": "EU"},
-            {"value": "us", "label": "US"},
-            {"value": "sq", "label": "Offline retail"}
+            {"value": "uk", "label": dict.channels.uk},
+            {"value": "eu", "label": dict.channels.eu},
+            {"value": "us", "label": dict.channels.us},
+            {"value": "sq", "label": dict.channels.sq}
         ]
     },
 
     getChannelsOnline: () => {
         return [
-            {"value": "uk", "label": "UK"},
-            {"value": "eu", "label": "EU"},
-            {"value": "us", "label": "US"}
+            {"value": "uk", "label": dict.channels.uk},
+            {"value": "eu", "label": dict.channels.eu},
+            {"value": "us", "label": dict.channels.us}
         ]
+    },
+
+    getChannelsAllTree: () => {
+        return [{
+            "label": "All",
+            "value": "_all",
+            "children": [{
+                "label": "Ecommerce all",
+                "value": "_e_all",
+                "children": [
+                    {"value": "uk", "label": dict.channels.uk},
+                    {"value": "eu", "label": dict.channels.eu},
+                    {"value": "us", "label": dict.channels.us}
+                ]
+            },
+            {
+                "label": "Offline all",
+                "value": "_o_all",
+                "children": [
+                    {"value": "sq", "label": dict.channels.sq}
+                ]
+            }]  
+        }]
+    },
+
+    getChannelsOnlineTree: () => {
+        return [{
+            "label": "All",
+            "value": "_all",
+            "children": [{
+                "label": "Ecommerce all",
+                "value": "_e_all",
+                "children": [
+                    {"value": "uk", "label": dict.channels.uk},
+                    {"value": "eu", "label": dict.channels.eu},
+                    {"value": "us", "label": dict.channels.us}
+                ]
+            }]  
+        }]
     }
 };

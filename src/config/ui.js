@@ -195,37 +195,6 @@ exports.ui = {
             {"value": "processing", "label": "Processing"}
         ],
 
-        "channel": [{
-            "label": "All",
-            "value": "_all",
-            "children": [{
-                "label": "Ecommerce all",
-                "value": "_e_all",
-                "children": [
-                    {"label": "UK", "value": "uk"},
-                    {"label": "EU", "value": "eu"},
-                    {"label": "US", "value": "us"}
-                ]
-            },
-            {
-                "label": "Offline all",
-                "value": "_o_all",
-                "children": [
-                    {"label": "Offline retail", "value": "sq"}
-                ]
-            }]  
-        }],
-
-        "channel_f": [{
-            "label": "Ecommerce all",
-            "value": "_e_all",
-            "children": [
-                {"label": "UK", "value": "uk"},
-                {"label": "EU", "value": "eu"},
-                {"label": "US", "value": "us"}
-            ]
-        }],
-
         "period":[
             {"label": "This week", "value": "week"},
             {"label": "Date range", "value": "date"},
